@@ -18,7 +18,6 @@
         <li v-for='i in Plist' v-text='i.provinceName' v-show='type==2' @click='goNext(3,i,)'></li>
         <li v-for='i in Plist' v-text='i.provinceName' v-show='type==3' @click='goNext(4,i,)'></li>
         <li v-for='i in Plist' v-text='i.provinceName' class="555" v-show='type==4' @click='goNext(5,i,)'></li>
-        <!--<li v-for='(i,index) in Vlist' v-text='i.name' v-show='false' :class='{activeC:villageVal==i.name}' @click='goNext(4,i,)'></li>-->
       </ul>
     </div>
   </div>
@@ -52,8 +51,6 @@ export default {
       },
       type:null,//顶部页面数据
       areaType:null,
-      
-        // villageActive:null,//选择小狗狗
     };
   },
   created() {
@@ -62,7 +59,6 @@ export default {
   methods: {
     // 通过id获取下级
     getByParentId(id){
-      // console.log(id+"===id");
       ajax({
         url: 'member-api-impl/address/selByParentId',
         optionParams: {parentId:id}
@@ -97,14 +93,10 @@ export default {
           this.getByParentId(name.id);
         }else if(type==5){
           this.form.committeesVal=name.provinceName;
-          // console.log("name.id==",name);
-          // console.log("committeesVal==",name.provinceName);
-          // this.getByParentId(name.id);
           let provinceName = this.form.provinceVal+this.form.cityVal+this.form.districtVal+this.form.villageVal+this.form.committeesVal;
           let searchRes={addressId:name.id,address:provinceName}
           this.$router.push({path:'/confirmTheOrder',query:{searchRes:JSON.stringify(searchRes)}})
         }
-
         this.type=type;
       },
       subSave() {

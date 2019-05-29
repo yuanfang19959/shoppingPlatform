@@ -3,39 +3,30 @@
     <!-- 头部导航 -->
     <top :barType="barType" :barText="barText"></top>
     <blank></blank>
-    
+
     <div class="nav">
       <ul>
-        <li
-          v-for="(item, index) in list"
-          @click="selectActive(index, item.status)"
-          :class="[activeIndex === index ? 'default-active' : 'default']"
-          :key="index"
-        >
+        <li v-for="(item, index) in list" @click="selectActive(index, item.status)" :class="[activeIndex === index ? 'default-active' : 'default']"
+          :key="index">
           {{ item.name }}
         </li>
       </ul>
     </div>
     <div style="height:81px;"></div>
     <!-- 下部内容 -->
-    <div  ref='wrapper' style="overflow: scroll;-webkit-overflow-scrolling:touch" :style="{height:wrapperHeight+'px'}">
-      <mt-loadmore  :bottom-method="loadBottom"  :topMethod="loadtop" :bottom-all-loaded="allLoaded" ref="loadmore" @bottom-status-change="handleBottomChange"  @top-status-change="handleTopChange" :auto-fill="false">
+    <div ref='wrapper' style="overflow: scroll;-webkit-overflow-scrolling:touch" :style="{height:wrapperHeight+'px'}">
+      <mt-loadmore  :bottom-method="loadBottom"   :topMethod="loadtop" :bottom-all-loaded="allLoaded" ref="loadmore"
+        @bottom-status-change="handleBottomChange" @top-status-change="handleTopChange" :auto-fill="false">
         <div class="content">
           <!-- 单个商品区域 -->
-          <div
-            class="box"
-            v-for="goods in goodsList"
-            @click="
+          <div class="box" v-for="goods in goodsList" @click="
               $router.push({ path: '/orderDetails', query: { id: goods.id } })
-            "
-          >
+            ">
             <!-- 头部区域不包含商品信息 -->
             <div class="top">
               <span class="left">
                 <img src="@/assets/imagea/position.png" alt />
                 <span>{{goods.villageName }}</span>
-                <!--<span>西湖区</span>-->
-                <!--<img src="@/assets/imagea/arrowRight.svg" alt />-->
               </span>
               <span class="r1">{{ goods.status | orderStatusFilter }}</span>
             </div>
@@ -50,7 +41,6 @@
                 <p>{{ item.goodsName }}</p>
                 <span class="kg">{{ item.explains }}</span>
                 <span class="kg">净含量 {{ item.weight }}</span>
-                <!--<span class="kg">净含量 {{ item.weight }}千克</span>-->
               </div>
 
               <div class="right">
@@ -86,14 +76,9 @@
                     查看物流
                   </button>
                 </li>
-                <!-- <li v-if="goods.status == 4">
-                  <button @click.stop="event(7, goods.id)" class="buyAgain">
-                    再次购买
-                  </button>
-                </li> -->
                 <li v-if="goods.status == 2 || goods.status == 1">
-                    <!-- enableReturn为商品是否支持退换货字段 -->
-                  <button v-show="goods.enableReturn"   @click.stop="event(8, goods.id)" class="buyAgain">
+                  <!-- enableReturn为商品是否支持退换货字段 -->
+                  <button v-show="goods.enableReturn" @click.stop="event(8, goods.id)" class="buyAgain">
                     申请退款
                   </button>
                 </li>
@@ -125,7 +110,7 @@
           </div>
         </div>
         <!-- 底部撑高 -->
-        <div class="footpad" ></div>
+        <div class="footpad"></div>
       </mt-loadmore>
     </div>
     <foot></foot>
@@ -134,7 +119,7 @@
 
 <script>
 import foot from "@/components/footer.vue";
-import { MessageBox, Toast,Loadmore } from "mint-ui";
+import { MessageBox, Toast, Loadmore } from "mint-ui";
 import ajax from "@utils/config";
 import top from "@/components/header2.vue";
 import blank from "@/components/blank.vue";
@@ -178,56 +163,55 @@ export default {
         {
           id: 1005,
           name: "待评价",
-          status:4,
-        },
-        // {
-        //   id: 1006,
-        //   name: "退换/售后"
-        // }
+          status: 4
+        }
       ],
       goods: [],
-      params: { 
-        status: "" ,
-        pageIndex:1,
-        pageSize:5,
+      params: {
+        status: "",
+        pageIndex: 1,
+        pageSize: 5
       },
       goodsList: [], //订单数据
       goodsAllCount: 0,
       goodsAllPrice: 0,
-      allLoaded :false,
-      wrapperHeight :null,
-      pages:null,
-      total:0, //返回总订单数
+      allLoaded: false,
+      wrapperHeight: null,
+      pages: null,
+      total: 0 //返回总订单数
     };
   },
   created() {
-    this.params.status = this.$route.query.type ? this.$route.query.type-1 : ""; //入口 我的订单直接进 赋值“”  个人中心进 取type-1
+    this.params.status = this.$route.query.type
+      ? this.$route.query.type - 1
+      : ""; //入口 我的订单直接进 赋值“”  个人中心进 取type-1
     this.getCountAndPrice();
     this.getList();
   },
   mounted() {
-    if(this.$route.query.type!=undefined){
-      let type=this.$route.query.type;
-      this.activeIndex = this.$route.query.iindex; 
-      this.selectActive(this.activeIndex,type);
+    if (this.$route.query.type != undefined) {
+      let type = this.$route.query.type;
+      this.activeIndex = this.$route.query.iindex;
+      this.selectActive(this.activeIndex, type);
     }
-    this.wrapperHeight = document.documentElement.clientHeight -this.$refs.wrapper.getBoundingClientRect().top-100;
+    this.wrapperHeight =
+      document.documentElement.clientHeight -
+      this.$refs.wrapper.getBoundingClientRect().top -
+      100;
   },
   methods: {
     handleTopChange(status) {
-      this.topStatus  = status;
-      // console.log("this.handleTopChange==",this.topStatus);
+      this.topStatus = status;
     },
     handleBottomChange(status) {
       this.bottomStatus = status;
-      // console.log("this.bottomStatus==",this.bottomStatus);
     },
     // 下拉操作加载
     loadtop() {
       setTimeout(() => {
-        if(this.params.pageSize>5){
-            this.params.pageSize = 5;
-            this.allLoaded = false; //初始化全部加载，否在在此上滑无法更新；
+        if (this.params.pageSize > 5) {
+          this.params.pageSize = 5;
+          this.allLoaded = false; //初始化全部加载，否在在此上滑无法更新；
         }
         this.getList();
         this.$refs.loadmore.onTopLoaded();
@@ -235,17 +219,17 @@ export default {
     },
     //上滑加载
     loadBottom() {
-        setTimeout(() => {
-          if(this.params.pageSize>=this.total){
-            this.allLoaded = true;
-            Toast("已加载全部！")
-          }else{
-              this.params.pageSize +=5;
-              this.getList();
-          }
-              this.$refs.loadmore.onBottomLoaded();
-        }, 1000);
-      },
+      setTimeout(() => {
+        if (this.params.pageSize >= this.total) {
+          this.allLoaded = true;
+          Toast("已加载全部！");
+        } else {
+          this.params.pageSize += 5;
+          this.getList();
+        }
+        this.$refs.loadmore.onBottomLoaded();
+      }, 1000);
+    },
     selectActive(index, type) {
       this.activeIndex = index;
       this.params.status = type;
@@ -362,7 +346,6 @@ export default {
           if (response.code === 200) {
             this.goodsList = response.data.records ? response.data.records : [];
             this.pages = response.data.pages;
-            
           } else {
             console.log(response);
           }
@@ -379,10 +362,10 @@ export default {
         params = {};
       if (type == 0) {
         url = "order-api-impl/order/updateOrderinfoStatus";
-        params = { orderId: data, status:4};  //确认收货传参 stutas：4
+        params = { orderId: data, status: 4 }; //确认收货传参 stutas：4
         console.log("operat==222=");
       } else if (type == 1) {
-        url = "order-api-impl/order/cancelOrderinfo?id="+data; //取消订单
+        url = "order-api-impl/order/cancelOrderinfo?id=" + data; //取消订单
         params = { id: data };
       } else if (type == 2) {
         url = "order-api-impl/order/deleteOrderinfo"; //删除订单
@@ -395,29 +378,21 @@ export default {
         params = { orderId: data };
       } else if (type == 5) {
         //申请退款
-        this.$router.push({ path: '/applyRefund', query: { id: data } });
+        this.$router.push({ path: "/applyRefund", query: { id: data } });
       }
-
-      // url: "product-api-impl/shopcar/addAndUpdateShopCar",
-      //   optionParams: {
-      //     goodsId: this.goodsId,
-      //     goodsNum: this.goodsNum,
-      //     supplierId: this.supplierId
-      //   }
       ajax({
         url: url,
         optionParams: params
       })
         .post()
         .then(response => {
-          console.log("11111111");
           if (response.code === 200) {
             if (type == 0) {
               this.$router.push("/confirmGoods");
             } else if (type == 1) {
             } else if (type == 2) {
             } else if (type == 4) {
-                Toast("操作成功！")
+              Toast("操作成功！");
             }
             this.getList();
           } else {
@@ -431,10 +406,11 @@ export default {
   },
   filters: {
     // 订单总价
-    orderTotalNumFilter(goodnum,fee){
-      let Tgoodnum=parseFloat(goodnum),Tfee=fee;
-      return Tgoodnum*1+Tfee;
-    },
+    orderTotalNumFilter(goodnum, fee) {
+      let Tgoodnum = parseFloat(goodnum),
+        Tfee = fee;
+      return Tgoodnum * 1 + Tfee;
+    }
   }
 };
 </script>

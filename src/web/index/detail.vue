@@ -19,10 +19,6 @@
       <ul class="goodsDisp_list">
         <li class="first_item flexbox">
           <div class="flex1 price_num"><i>&yen;</i>{{ GoodsDeatil.price }}</div>
-          <!--<div class="first_itemR">
-                  <img :src="pageshareImg" alt="">
-                  <span class="btn_text">分享</span>
-                </div>-->
         </li>
         <li class="goodsName">
           <div>
@@ -33,9 +29,6 @@
           <div>{{ GoodsDeatil.explains }}</div>
         </li>
         <li class="flexbox checkVillage">
-          <!-- <div>
-            <img :src="dingwei" alt="" />
-          </div> -->
           <div class="flex1 checkVillageName">
             {{ GoodsDeatil.supplierName }}
           </div>
@@ -52,42 +45,18 @@
         <li class="flex1" v-if=" GoodsDeatil.isFree==2">快递：包邮</li>
       </ul>
     </div>
-    <!--规格-->
-    <!--<div class="format">
-      <ul class="flexbox">
-        <li class="name">规格</li>
-        <li class="flex1">选择尺寸</li>
-      </ul>
-    </div>-->
-    <!--服务-->
     <div class="sever">
-      <!--<div class="flexbox first_item">
-        <span class="name">服务</span>
-        <span class="flex1">售后 · 运费险</span>
-      </div>-->
       <div class="flexbox second_item">
         <span class="name">参数</span>
         <span class="flex1">净含量 {{ GoodsDeatil.weight }}</span>
-        <!--<span class="flex1">净含量 {{ GoodsDeatil.weight }}千克</span>-->
       </div>
     </div>
     <!--评价-->
     <div class="evaluate">
       <div class="flexbox evaluate_top">
         <span class="flex1 name">宝贝评价</span>
-        <span
-          class=""
-          v-if="hasNoContent"
-          @click="$router.push({ path: '/allEvaluation',query: { id: $route.query.id, supplierId: supplierId, GoodsDeatil: JSON.stringify(GoodsDeatil)}})">查看全部</span>
+        <span class="" v-if="hasNoContent" @click="$router.push({ path: '/allEvaluation',query: { id: $route.query.id, supplierId: supplierId, GoodsDeatil: JSON.stringify(GoodsDeatil)}})">查看全部</span>
       </div>
-      <!--评论标签-->
-      <!--<div class="evaluate_lable" >
-        <ul class="evaluate_lableList">
-          <li v-for="i in 5">
-            口感好
-          </li>
-        </ul>
-      </div>-->
       <!--用户信息区域-->
       <div class="userinfoShow flexbox" v-if="hasNoContent">
         <div class="avatar_layer">
@@ -119,22 +88,7 @@
             <span class="cart_btn cartBtnCover" @click="addtoCar">
               加入购物车
             </span>
-            <!-- <span
-              class="now_pay"
-              @click="
-                $router.push({
-                  path: '/confirmTheOrder',
-                  query: {
-                    id: $route.query.id,
-                    GoodsDeatil: JSON.stringify(GoodsDeatil)
-                  }
-                })
-              "
-            > -->
-             <span
-              class="now_pay"
-              @click="confirm"
-            >
+            <span class="now_pay" @click="confirm">
               立即购买
             </span>
           </div>
@@ -155,7 +109,6 @@ export default {
   },
   data() {
     return {
-      // goods
       blackup: require("@/assets/imagea/blackup.svg"),
       dingwei: require("@/assets/imagea/dingwei.svg"),
       shareimg: require("@/assets/imagea/shareimg.svg"),
@@ -164,11 +117,6 @@ export default {
       detail_btn: require("@/assets/imagea/detail_btn.svg"),
       detail_btn2: require("@/assets/imagea/detail_btn2.svg"),
       detail_btn2H: require("@/assets/imagea/detail_btn2H.svg"),
-      //   detailList: [
-      //     { url: require("@/assets/imagea/goods.png") },
-      //     { url: require("@/assets/imagea/goods.png") },
-      //     { url: require("@/assets/imagea/goods.png") }
-      //   ],
       TopBg: {
         background: "url(" + require("@/assets/imagea/goods.png") + ")",
         backgroundRepeat: "no-repeat",
@@ -198,21 +146,21 @@ export default {
   mounted() {
     this.arr.push(this.goodsId + "");
     setTimeout(() => {
-       this.initbanner();
+      this.initbanner();
     }, 600);
   },
   methods: {
-    confirm(){
-        let temp = [];
-        temp.push({goodsId:this.$route.query.id,num:1})
-        this.$router.push({path:'/confirmTheOrder'})
-        localStorage.setItem("list",JSON.stringify(temp))
+    confirm() {
+      let temp = [];
+      temp.push({ goodsId: this.$route.query.id, num: 1 });
+      this.$router.push({ path: "/confirmTheOrder" });
+      localStorage.setItem("list", JSON.stringify(temp));
     },
     initbanner() {
-       var mySwiper = new this.$Swiper(".swiper-container", {
+      var mySwiper = new this.$Swiper(".swiper-container", {
         autoplay: {
           delay: 4000, //1秒切换一次
-          disableOnInteraction: false, //用户滑动之后，可以继续自动播放
+          disableOnInteraction: false //用户滑动之后，可以继续自动播放
         },
         loop: true, // 循环模式选项
         pagination: {
@@ -251,14 +199,6 @@ export default {
             if (this.commentDetailList != null) {
               this.hasNoContent = true;
             }
-
-            console.log(this.commentDetailList);
-            // this.cap = this.commentDetailList
-            //   ? this.commentDetailList[0].content
-            //   : "";
-            // this.nickname = this.commentDetailList
-            //   ? this.commentDetailList[0].nickname
-            //   : "";
             this.supplierId = this.GoodsDeatil.supplierId;
           } else {
             console.log(response);

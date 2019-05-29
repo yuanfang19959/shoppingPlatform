@@ -2,14 +2,6 @@
   <div class="main">
     <!-- 上部红色区域 -->
     <div class="bannerShow">
-      <!--<img
-        class="blackup"
-        :src="blackup"
-        alt=""
-        @click="$router.push('/my/index')"
-      />
-      <span class="center_1">付款成功</span>
-      <span class="leftS" @click="alr">提交</span>-->
       <top :barType='barType' :barText='barText' @subSave='alr'></top>
       <blank></blank>
     </div>
@@ -36,17 +28,17 @@ import ajax from "@utils/config";
 import top from "@/components/header2.vue";
 import blank from "@/components/blank.vue";
 export default {
-  components:{
+  components: {
     top,
     blank
   },
   data() {
     return {
-      barType:'0',  
-      barText:{
-        leftData:{type:1,name:require("@/assets/imagea/blackup.svg")},
-        centerData:{type:0,name:'付款成功'},
-        rightData:{type:0,name:'提交'},
+      barType: "0",
+      barText: {
+        leftData: { type: 1, name: require("@/assets/imagea/blackup.svg") },
+        centerData: { type: 0, name: "付款成功" },
+        rightData: { type: 0, name: "提交" }
       },
       meat: require("@/assets/imagea/meat.png"),
       blackup: require("@/assets/imagea/blackup.svg"),
@@ -80,9 +72,6 @@ export default {
       ]
     };
   },
-  created() {
-    // this.getaddressList();
-  },
   methods: {
     alr() {
       if (this.reason) {
@@ -113,20 +102,20 @@ export default {
     },
     getaddressList() {
       ajax({
-        url: 'tAppUser/userInfo',
+        url: "tAppUser/userInfo",
         optionParams: {}
-      }).post()
+      })
+        .post()
         .then(response => {
           if (response.code === 200) {
-            // this.balance = response.data.balance;
           } else {
-            console.log(response)
+            console.log(response);
           }
         })
         .catch(error => {
-          console.log(error)
-        })
-    },
+          console.log(error);
+        });
+    }
   }
 };
 </script>

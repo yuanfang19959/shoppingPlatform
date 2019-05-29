@@ -26,7 +26,6 @@
           <div class="rightInfo">
             <p>{{ items.goodsName }}</p>
             <span class="kg" v-if="item.weight">净含量{{ items.weight }}</span>
-            <!--<span class="kg" v-if="item.weight">净含量{{ items.weight }}千克</span>-->
           </div>
 
           <div class="right">
@@ -63,7 +62,7 @@
         </div>
       </div>
     </div>
-    <div class="load" v-show="loading" >
+    <div class="load" v-show="loading">
       <span>加载中</span>
       <img src="@/assets/imagea/load.gif" alt="" />
     </div>
@@ -107,7 +106,7 @@ export default {
       garbage: require("@/assets/imagea/my/garbage.svg"),
       activeIndex: 1, //第几页
       pages: null, //总页数
-      loading: false,   //显示加载gif
+      loading: false, //显示加载gif
       isLoadAll: false //是否加载全部
     };
   },
@@ -131,19 +130,17 @@ export default {
           console.log(error);
         });
     },
-    // getScroll(){
-    //       return {
-    //         //   left: window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0,
-    //           top: window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0
-    //       };
-    //   },
     //上来加载新数据
     onScroll() {
       //可滚动容器的高度
       let innerHeight = document.querySelector(".content").clientHeight; //屏幕尺寸高度
-      let outerHeight = document.documentElement.clientHeight; //可滚动容器超出当前窗口显示范围的高度 
-    //scrollTop在页面为滚动时为0，开始滚动后，慢慢增加，滚动到页面底部时，出现innerHeight < (outerHeight + scrollTop)的情况，严格来讲，是接近底部。
-      let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0 //解决不同浏览器的兼容性
+      let outerHeight = document.documentElement.clientHeight; //可滚动容器超出当前窗口显示范围的高度
+      //scrollTop在页面为滚动时为0，开始滚动后，慢慢增加，滚动到页面底部时，出现innerHeight < (outerHeight + scrollTop)的情况，严格来讲，是接近底部。
+      let scrollTop =
+        window.pageYOffset ||
+        document.documentElement.scrollTop ||
+        document.body.scrollTop ||
+        0; //解决不同浏览器的兼容性
       console.log(innerHeight + " " + outerHeight + " " + scrollTop);
       if (innerHeight < outerHeight + scrollTop) {
         //加载更多操作
@@ -167,7 +164,7 @@ export default {
                 setInterval(() => {
                   this.loading = false; //隐藏加载弹框
                 }, 600);
-                this.returnList = this.returnList.concat(this.temp); 
+                this.returnList = this.returnList.concat(this.temp);
                 console.log(this.returnList);
               } else {
                 console.log(response);

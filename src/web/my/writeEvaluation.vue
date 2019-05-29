@@ -2,14 +2,6 @@
   <div class="main">
     <!-- 上部红色区域 -->
     <div class="bannerShow">
-      <!--<img
-        class="blackup"
-        :src="blackup"
-        alt=""
-        @click="$router.push('/my/index')"
-      />
-      <span class="center_1">编写评价</span>
-      <span class="leftS" @click="alr;$router.push('/evaluationSuc')">发布</span>-->
       <top :barType='barType' :barText='barText' @subSave='submitForm'></top>
       <blank></blank>
     </div>
@@ -19,7 +11,6 @@
     <div class="topmain">
       <!-- //商品简要信息 -->
       <div class="ones" v-for="(i,index) in goodsInfo" :key="i.id">
-      <!--<div class="ones" v-for="(i,index) in goodsInfo" :key="i.id">-->
         <div class="topContent">
           <img :src="i.goodsImage" alt="" />
           <div class="topLeft">
@@ -30,7 +21,7 @@
 
         <div class="write">
           <star @func="getStarCount" class="star" :itemIndex='i.index'></star>
-          <textarea  v-model='i.content' placeholder="在这里输入评价" rows="8" cols="47"> </textarea>
+          <textarea v-model='i.content' placeholder="在这里输入评价" rows="8" cols="47"> </textarea>
         </div>
         <!-- 若要遍历，从上面开始下面为底部匿名按钮 -->
         <div class="write_bottom" @click="change(index)">
@@ -40,7 +31,6 @@
         </div>
       </div>
 
-      
     </div>
   </div>
 </template>
@@ -55,15 +45,15 @@ export default {
   components: {
     star,
     top,
-    blank,
+    blank
   },
   data() {
     return {
-      barType:'0',  
-      barText:{
-        leftData:{type:1,name:require("@/assets/imagea/blackup.svg")},
-        centerData:{type:0,name:'编写评价'},
-        rightData:{type:0,name:'发布'},
+      barType: "0",
+      barText: {
+        leftData: { type: 1, name: require("@/assets/imagea/blackup.svg") },
+        centerData: { type: 0, name: "编写评价" },
+        rightData: { type: 0, name: "发布" }
       },
       meat: require("@/assets/imagea/meat.png"),
       blackup: require("@/assets/imagea/blackup.svg"),
@@ -76,103 +66,97 @@ export default {
       flag: false,
       StarCount: null,
       goods: [],
-      form:{
-        content:[],//评价内容
-        isAnon: [2,2],// 是否匿名 1-匿名 2-非匿名
-        productId: 0,//产品id
-        rank: [],//星级
+      form: {
+        content: [], //评价内容
+        isAnon: [2, 2], // 是否匿名 1-匿名 2-非匿名
+        productId: 0, //产品id
+        rank: [] //星级
       },
-      goodsInfo:[],
-      orderId:'',
+      goodsInfo: [],
+      orderId: ""
     };
   },
   created() {
     // this.getaddressList();
   },
-  mounted () {
+  mounted() {
     let id = this.$route.query.orderId;
-    this.orderId = id?id:'';
+    this.orderId = id ? id : "";
     this.getGoodsCommentData();
-
   },
   methods: {
     change(index) {
-
       let isAnon = this.goodsInfo[index].isAnon;
-      isAnon==1?isAnon=2:isAnon=1;
-      // this.form.isAnon[index]=isAnon;
-
-      this.goodsInfo[index].isAnon=isAnon;
-      
+      isAnon == 1 ? (isAnon = 2) : (isAnon = 1);
+      this.goodsInfo[index].isAnon = isAnon;
     },
     //获取子组件星星的值
-    getStarCount(fromSon,index) {
+    getStarCount(fromSon, index) {
       this.StarCount = fromSon;
-      // this.form.rank[index]=fromSon;
-      this.goodsInfo[index].rank=fromSon;
-     
+      this.goodsInfo[index].rank = fromSon;
     },
     // 通过订单号获取未评价商品
     getGoodsCommentData() {
       ajax({
-        url: 'order-api-impl/orderComm/list?orderId='+this.orderId,
+        url: "order-api-impl/orderComm/list?orderId=" + this.orderId,
         optionParams: {}
-      }).post()
+      })
+        .post()
         .then(res => {
           if (res.code === 200) {
-            this.goodsInfo=res.data?res.data:[];
-            this.goodsInfo.map((item,index)=>{
-              this.$set(item,"isAnon",1)
-              this.$set(item,"index",index)
-              this.$set(item,"rank",0)
-              this.$set(item,"content",'')
-            })
-          console.log("this.goodsInfo==",this.goodsInfo);
+            this.goodsInfo = res.data ? res.data : [];
+            this.goodsInfo.map((item, index) => {
+              this.$set(item, "isAnon", 1);
+              this.$set(item, "index", index);
+              this.$set(item, "rank", 0);
+              this.$set(item, "content", "");
+            });
+            console.log("this.goodsInfo==", this.goodsInfo);
           } else {
-            console.log(res)
+            console.log(res);
           }
-
         })
         .catch(error => {
-          console.log(error)
-        })
-    }, 
+          console.log(error);
+        });
+    },
     // 提交评价
     submitForm() {
-      let form={
-        orderId:this.orderId,
-        commList:[]
-      },commList=[];
-
-      // commList.push({content:this.form.content,isAnon:'2',productId:this.goodsInfo[0].goodsId,rank:1});
-
-      // console.log("this.form==",this.goodsInfo);
-      this.goodsInfo.map(item=>{
-        commList.push({content:item.content,isAnon:item.isAnon,productId:item.id,rank:item.rank});
-      })
-     form.commList=commList;
-
-      // console.log("this.form==",form);
+      let form = {
+          orderId: this.orderId,
+          commList: []
+        },
+        commList = [];
+      this.goodsInfo.map(item => {
+        commList.push({
+          content: item.content,
+          isAnon: item.isAnon,
+          productId: item.id,
+          rank: item.rank
+        });
+      });
+      form.commList = commList;
       ajax({
-        url: 'order-api-impl/orderComm/submit',
+        url: "order-api-impl/orderComm/submit",
         optionParams: form
-      }).post()
+      })
+        .post()
         .then(res => {
           if (res.code === 200) {
-            this.userInfo=res.data.userInfo?res.data.userInfo:{};
-            this.userOrderInfo=res.data.userOrderInfo?res.data.userOrderInfo:{};
+            this.userInfo = res.data.userInfo ? res.data.userInfo : {};
+            this.userOrderInfo = res.data.userOrderInfo
+              ? res.data.userOrderInfo
+              : {};
             Toast("发布成功");
-            this.$router.push('/evaluationSuc')
-             
+            this.$router.push("/evaluationSuc");
           } else {
-            console.log(res)
+            console.log(res);
           }
-
         })
         .catch(error => {
-          console.log(error)
-        })
-    }, 
+          console.log(error);
+        });
+    }
   }
 };
 </script>

@@ -2,8 +2,6 @@
   <div class="main">
     <!-- 上部红色区域 -->
     <div class="bannerShow">
-      <!--<img class="blackup" :src="blackup" alt="" @click='$router.push("/my/index")'>
-            <span>我的积分</span>-->
       <top :barType="barType" :barText="barText"></top>
       <blank></blank>
     </div>
@@ -17,8 +15,8 @@
         </div>
         <div class="pic">
           <span v-for="i in starList" :key="i.id">
-            <img src="@/assets/imagea/diamondB.svg" alt="" v-show="!i.starFlag"/>
-            <img src="@/assets/imagea/diamond.svg" alt="" v-show="i.starFlag"/>
+            <img src="@/assets/imagea/diamondB.svg" alt="" v-show="!i.starFlag" />
+            <img src="@/assets/imagea/diamond.svg" alt="" v-show="i.starFlag" />
           </span>
         </div>
       </div>
@@ -61,7 +59,7 @@ import ajax from "@utils/config";
 import { Toast, DatetimePicker } from "mint-ui";
 import top from "@/components/header2.vue";
 import blank from "@/components/blank.vue";
-import { setTimeout } from 'timers';
+import { setTimeout } from "timers";
 export default {
   components: {
     top,
@@ -77,42 +75,41 @@ export default {
       },
       blackup: require("@/assets/imagea/blackup.svg"),
       integral: {},
-      starList:[
-          {
-              id:1,
-              starFlag:false,
-          },
-          {
-              id:2,
-              starFlag:false,
-          },
-          {
-              id:3,
-              starFlag:false,
-          },
-          {
-              id:4,
-              starFlag:false,
-          },
-          {
-              id:5,
-              starFlag:false,
-          }
+      starList: [
+        {
+          id: 1,
+          starFlag: false
+        },
+        {
+          id: 2,
+          starFlag: false
+        },
+        {
+          id: 3,
+          starFlag: false
+        },
+        {
+          id: 4,
+          starFlag: false
+        },
+        {
+          id: 5,
+          starFlag: false
+        }
       ],
-      gradeRangeArr:[],
-      listIntegral:[]
+      gradeRangeArr: [],
+      listIntegral: []
     };
   },
   created() {
     this.getaccountGrade();
-    
-    setTimeout(()=>{
-        this.starOn()
-    },200)
-    
+
+    setTimeout(() => {
+      this.starOn();
+    }, 200);
   },
   mounted() {
-     this.starOn();
+    this.starOn();
   },
   methods: {
     getaccountGrade() {
@@ -124,7 +121,7 @@ export default {
         .then(res => {
           if (res.code === 200) {
             this.integral = res.data ? res.data : {};
-            this.gradeRangeArr=this.integral.gradeRange.split(',');
+            this.gradeRangeArr = this.integral.gradeRange.split(",");
             this.listIntegral = this.integral.listIntegral;
           } else {
             console.log(res);
@@ -134,13 +131,13 @@ export default {
           console.log(error);
         });
     },
-    starOn(){
-        // 点亮心心
-         if(this.integral){
-            let star = this.integral.gradeStar
-          for(var i = 0;i <star; i++){
-              this.starList[i].starFlag = true
-          }
+    starOn() {
+      // 点亮心心
+      if (this.integral) {
+        let star = this.integral.gradeStar;
+        for (var i = 0; i < star; i++) {
+          this.starList[i].starFlag = true;
+        }
       }
     }
   },

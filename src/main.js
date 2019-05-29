@@ -12,7 +12,6 @@ import MintUI from 'mint-ui'
 import FastClick from 'fastclick'
 import 'mint-ui/lib/style.css'
 import '@/assets/scss/commin.scss';
-//  FastClick.attach(document.body);
 
 Vue.use(MintUI)
 // 赋值到Vue的原型上面，在页面就可以使用this.$ + name获取到了

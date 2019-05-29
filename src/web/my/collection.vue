@@ -2,20 +2,16 @@
   <div class="main">
     <!-- 上部红色区域 -->
     <div class="bannerShow" style="z-index:999">
-      <img
-        class="blackup"
-        :src="blackup"
-        alt=""
-        @click="$router.push('/my/index')"
-      />
+      <img class="blackup" :src="blackup" alt="" @click="$router.push('/my/index')" />
       <span class="center_1">我的收藏</span>
       <img :src="sreach" alt="" @click="$router.push('/my/search')" />
       <span class="leftS" v-show="!flag" @click="change">管理</span>
       <span class="leftS" v-show="flag" @click="change">完成</span>
     </div>
     <div class="clear"></div>
-    <div  ref='wrapper' style="overflow:scroll;-webkit-overflow-scrolling: touch" :style="{height:wrapperHeight+'px'}">
-      <mt-loadmore  :bottom-method="loadBottom"  :topMethod="loadtop" :bottom-all-loaded="allLoaded" ref="loadmore" @bottom-status-change="handleBottomChange"  @top-status-change="handleTopChange" :auto-fill="false">
+    <div ref='wrapper' style="overflow:scroll;-webkit-overflow-scrolling: touch" :style="{height:wrapperHeight+'px'}">
+      <mt-loadmore  :bottom-method="loadBottom"   :topMethod="loadtop" :bottom-all-loaded="allLoaded" ref="loadmore"
+        @bottom-status-change="handleBottomChange" @top-status-change="handleTopChange" :auto-fill="false">
         <div class="content">
           <!-- 单个商品区域 -->
           <div class="goods" v-for="(i, index) in listData" :key="i.id" v-show="i">
@@ -24,21 +20,12 @@
               <img :src="checkedH" v-show="i.isShow" alt="" />
             </div>
             <div class="imgContainer">
-              <img
-                :src="i.imageAddress"
-                alt="商品图片丢失啦"
-                @click="toNew(i.id)"
-              />
+              <img :src="i.imageAddress" alt="商品图片丢失啦" @click="toNew(i.id)" />
             </div>
 
             <div class="rightInfo">
               <p>{{ i.name }}</p>
-              <!-- <span class="kg">净含量{{ i.weight }}克</span> -->
-              <span class="kg">{{ i.explains }}</span> 
-              <!-- <div class="tips">
-                <span>七折</span>
-                <span>七折</span>
-              </div> -->
+              <span class="kg">{{ i.explains }}</span>
               <br>
               <br>
               <div class="bottom">
@@ -52,7 +39,7 @@
           <div class="blackspace"></div>
         </div>
       </mt-loadmore>
-    </div>    
+    </div>
 
     <!-- 底部删除 -->
     <div class="bottom_pay" v-show="flag">
@@ -69,10 +56,10 @@
 </template>
 
 <script>
-import { Toast ,Loadmore } from "mint-ui";
+import { Toast, Loadmore } from "mint-ui";
 import ajax from "@utils/config";
 import { debug } from "util";
-import { setTimeout } from 'timers';
+import { setTimeout } from "timers";
 
 export default {
   data() {
@@ -95,15 +82,15 @@ export default {
       listData: [],
       arr: [],
       infoData: {},
-      params:{
-        pageSize:10,
-        pageIndex:1,
-        selectName:'',//搜索内容
+      params: {
+        pageSize: 10,
+        pageIndex: 1,
+        selectName: "" //搜索内容
       },
-      allLoaded :false,
-      wrapperHeight :null,
-      pages:1, //总页数
-      total:0, //总条数
+      allLoaded: false,
+      wrapperHeight: null,
+      pages: 1, //总页数
+      total: 0 //总条数
     };
   },
   watch: {
@@ -117,33 +104,38 @@ export default {
   },
   created() {
     this.getList();
-    setTimeout(()=>{
-        this.comTheAllCount();
-        console.log(this.pages)
-    },1000)
+    setTimeout(() => {
+      this.comTheAllCount();
+      console.log(this.pages);
+    }, 1000);
   },
-  mounted () {
-    let name=this.$route.query.name;
-    this.params.selectName=name?name:'';
-    this.wrapperHeight = document.documentElement.clientHeight -this.$refs.wrapper.getBoundingClientRect().top;
+  mounted() {
+    let name = this.$route.query.name;
+    this.params.selectName = name ? name : "";
+    this.wrapperHeight =
+      document.documentElement.clientHeight -
+      this.$refs.wrapper.getBoundingClientRect().top;
   },
   methods: {
     getList() {
       ajax({
         url: "member-api-impl/user/myGoodsCollection ",
-        optionParams: this.params,
-      }).post()
+        optionParams: this.params
+      })
+        .post()
         .then(res => {
           if (res.code === 200) {
             this.pages = res.data.total ? res.data.total : {};
-            if(this.params.pageIndex>this.pages){
+            if (this.params.pageIndex > this.pages) {
               this.params.pageIndex--;
               // console.log("2222");
               return;
             }
             this.infoData = res.data ? res.data : {};
-            this.listData = this.listData.concat(this.infoData.CollectionGoodsList); 
-            this.allLoaded=false;
+            this.listData = this.listData.concat(
+              this.infoData.CollectionGoodsList
+            );
+            this.allLoaded = false;
             this.total = this.infoData.total;
             this.pages = this.infoData.total;
             this.comTheAllCount(); //请求删除后重新，计算总页数
@@ -164,7 +156,7 @@ export default {
           console.log(error);
         });
     },
-    
+
     toNew(id) {
       this.$router.push({ path: "/index/detail", query: { id: id } });
     },
@@ -224,10 +216,10 @@ export default {
         .then(res => {
           if (res.code === 200) {
             Toast("取消收藏成功！");
-            if(this.arr.length>=10){
-                this.getList();
+            if (this.arr.length >= 10) {
+              this.getList();
             }
-                this.isAllChecked = false;
+            this.isAllChecked = false;
             this.arr = []; //请求删除后清空arr否则下一次请求会失败
           } else {
             console.log(res);
@@ -239,48 +231,44 @@ export default {
       this.listData = tempArr;
     },
     handleTopChange(status) {
-      this.topStatus  = status;
-      // console.log("this.handleTopChange==",this.topStatus);
+      this.topStatus = status;
     },
     handleBottomChange(status) {
       this.bottomStatus = status;
-      // console.log("this.bottomStatus==",this.bottomStatus);
     },
     loadtop() {
       setTimeout(() => {
         this.params.pageIndex = 1;
         this.listData = [];
-        this.allLoaded = false; 
+        this.allLoaded = false;
         this.getList();
-        if(this.params.pageIndex<=1){
+        if (this.params.pageIndex <= 1) {
           this.allLoaded = true;
-        }else{
+        } else {
           this.params.pageIndex--;
           this.getList();
         }
-          this.$refs.loadmore.onTopLoaded();
-        
+        this.$refs.loadmore.onTopLoaded();
       }, 1000);
     },
     loadBottom() {
-        if(this.params.pageIndex<this.pages){ 
-            this.params.pageIndex++;
-            this.getList();
-        }else{
-          Toast("已加载全部！");
-          this.allLoaded = true;       
-        }
-        this.$refs.loadmore.onBottomLoaded();
+      if (this.params.pageIndex < this.pages) {
+        this.params.pageIndex++;
+        this.getList();
+      } else {
+        Toast("已加载全部！");
+        this.allLoaded = true;
+      }
+      this.$refs.loadmore.onBottomLoaded();
     },
-    comTheAllCount(){
-        //通过数据总数，求总页数；
-        // let yuNum = this.total % 10;
-        if(this.total > 10){
-            let newPage = parseInt((this.total-1) / 10);
-            this.pages = newPage + 1
-        }else{
-            this.pages = 1;
-        }
+    comTheAllCount() {
+      //通过数据总数，求总页数；
+      if (this.total > 10) {
+        let newPage = parseInt((this.total - 1) / 10);
+        this.pages = newPage + 1;
+      } else {
+        this.pages = 1;
+      }
     }
   }
 };

@@ -1,32 +1,11 @@
 <template>
   <div class="mainCon">
     <div class="bannerShow">
-      <!--<img class="blackup" :src="blackup" alt="" @click="$router.go(-1)" />
-      <span class="center_1">全部评价</span>-->
       <top :barType="barType" :barText="barText"></top>
       <blank></blank>
     </div>
 
     <div class="clear"></div>
-
-    <!-- 上面的小tips 暂时不支持 -->
-    <!--<div class="tips" :class="flag ? 'extend' : 'small'">
-      <ul>
-        <li
-          v-for="(i, index) in toplist"
-          :key="i.id"
-          :class="i.topFlag ? 'redH' : 'blackH'"
-          @click="modify(index)"
-        >
-          {{ i.name }}
-        </li>
-      </ul>
-      <div v-show="showPic">
-        <img :src="down" alt="" @click="change" v-show="!flag" class="arrow" />
-        <img :src="top" alt="" @click="change" v-show="flag" class="arrow2" />
-      </div>
-    </div>-->
-
     <!-- 评论区域 -->
     <div class="app">
       <div class="all" v-for="(i, index) in commentDetailList" :key="i.id">
@@ -72,7 +51,6 @@
               加入购物车
             </span>
             <span class="now_pay" @click="nowPay">
-            <!--<span class="now_pay" @click="$router.push({path:'/confirmTheOrder',query:{id:$route.query.id }})">-->
               立即购买
             </span>
           </div>
@@ -170,8 +148,6 @@ export default {
     this.supplierId = this.$route.query.supplierId?this.$route.query.supplierId:''
     let GoodsDeatil = JSON.parse(this.$route.query.GoodsDeatil);
     this.GoodsDeatil=GoodsDeatil?GoodsDeatil:[];
-    // console.log("this.GoodsDeatil==",this.GoodsDeatil);
-    // console.log("this.supplierId==",this.supplierId);
     this.toplist[0].topFlag = true;
     if (this.toplist.length < 5) {
       // 若总的标签数小于5个 则不会显示上下箭头
@@ -180,8 +156,6 @@ export default {
     
     this.getGoodslist(this.id);
     this.arr.push(this.id);
-    // this.arr.push(this.id + "");
-   
   },
   methods: {
     change() {
@@ -219,10 +193,6 @@ export default {
         .then(response => {
           if (response.code === 200) {
             this.commentDetailList = response.data.list ? response.data.list : [];
-            // this.GoodsDeatil = this.goodsInfoData.GoodsDeatil; //商品详情
-            // this.commentDetailList = this.goodsInfoData.commentDetailList; //评论详情
-            // this.commentTotalCount = this.goodsInfoData.commentTotalCount; //评论数目
-            // this.isCollection = this.goodsInfoData.bool
           } else {
             console.log(response);
           }
@@ -245,7 +215,6 @@ export default {
             if(this.temp!=null){
             this.temp.map(item => {
               if (item.id === this.id * 1) {
-                // console.log("存在了" + item.id);
                 this.isCollection = true;
               }
             });}
@@ -312,16 +281,8 @@ export default {
       let temp = [],temp2 = [];
         //存放多选商品id {id：商品id，count：商品数量} 存入localstorage中 
         //多选商品时，可将数组传给商品接口，离开确认订单页面时。将localsotorage删除，不影响重复提交。
-          console.log("this.GoodsDeatil=22=",this.GoodsDeatil)
-            // this.GoodsDeatil.forEach(i=>{
-            //     if(i.ischecked){
-            //         temp.push({goodsId:i.id,num:i.shopCarNum,supplierId:i.supplierId})
-            //         temp2.push(i);
-            //     }
-            // })
           temp.push({goodsId:this.GoodsDeatil.id,num:this.GoodsDeatil.shopCarNum,supplierId:this.GoodsDeatil.supplierId})  
           temp2.push(this.GoodsDeatil);
-          // console.log("temp==",temp)
         localStorage.setItem("goodArr",JSON.stringify(temp))
         localStorage.setItem("goodArr2",JSON.stringify(temp2))
         this.$router.push({path:'/confirmTheOrder',query:{id:this.id }})

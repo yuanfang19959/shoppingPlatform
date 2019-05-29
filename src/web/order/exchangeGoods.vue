@@ -180,7 +180,7 @@ export default {
       backDescription: "", //退货理由
       returnPic: {}, //存储图片传值
       imgSrc: [],
-      imgFiles:[]
+      imgFiles: []
     };
   },
   created() {
@@ -227,9 +227,9 @@ export default {
     submit(obj) {
       //提交换货申请
       var returnPic = new FormData();
-      this.imgFiles.forEach((item,index)=>{
-          returnPic.append("returnPic"+index, item)
-      })
+      this.imgFiles.forEach((item, index) => {
+        returnPic.append("returnPic" + index, item);
+      });
       this.backDescription = this.reason.backDescription + "," + this.inpValue;
       if (this.reason.backDescription === undefined) {
         Toast("请选择退款原因！");
@@ -242,9 +242,7 @@ export default {
             this.backDescription +
             "&deliveryAddressId=" +
             this.address.deliveryAddressId,
-        //    optionParams: {returnPic0:returnPic.get("returnPic0"), returnPic1:returnPic.get("returnPic1"), returnPic2:null},
-         optionParams: returnPic,
-        //   contentType: "multipart/form-data"
+          optionParams: returnPic
         })
           .post()
           .then(response => {
@@ -285,7 +283,6 @@ export default {
     },
     popCancel() {
       this.popupVisible = false;
-      //   this.reason.backDescription = null;
     },
     change(item) {
       //单选
@@ -296,18 +293,18 @@ export default {
       this.reason = item;
     },
     getFile(type) {
-      let that = this,inputFile;
-      
-      if(type == 1){
-          let len = this.$refs.filElem1.files.length;
-          inputFile = this.$refs.filElem1.files[0];
-          for(var i=0; i<len; i++){
-            this.imgFiles.push(this.$refs.filElem1.files[i]);
-          } 
-      }else{
-          inputFile = this.$refs.filElem2.files[0];
+      let that = this,
+        inputFile;
+
+      if (type == 1) {
+        let len = this.$refs.filElem1.files.length;
+        inputFile = this.$refs.filElem1.files[0];
+        for (var i = 0; i < len; i++) {
+          this.imgFiles.push(this.$refs.filElem1.files[i]);
+        }
+      } else {
+        inputFile = this.$refs.filElem2.files[0];
       }
-    //   console.log(returnPic)
       if (
         inputFile.type !== "image/jpeg" &&
         inputFile.type !== "image/png" &&
@@ -316,7 +313,7 @@ export default {
         Toast("不是有效的图片文件！");
         return;
       }
-      
+
       let reader = new FileReader();
       reader.readAsDataURL(inputFile);
       reader.onload = function(e) {

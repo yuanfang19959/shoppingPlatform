@@ -2,12 +2,7 @@
   <div class="main">
     <!-- 上部红色区域 -->
     <div class="bannerShow">
-      <img
-        class="blackup"
-        :src="blackup"
-        alt=""
-        @click="$router.push('/my/index')"
-      />
+      <img class="blackup" :src="blackup" alt="" @click="$router.push('/my/index')" />
       <span>评价成功</span>
     </div>
     <div class="top">
@@ -23,7 +18,7 @@
     </div>
 
     <div class="middle">
-      <hr />
+      <hr/>
       <span>继续评价</span>
     </div>
 
@@ -47,43 +42,43 @@ import ajax from "@utils/config";
 import top from "@/components/header2.vue";
 import blank from "@/components/blank.vue";
 export default {
-  components:{
+  components: {
     top,
     blank
   },
   data() {
     return {
-      barType:'0',  
-      barText:{
-        leftData:{type:1,name:require("@/assets/imagea/blackup.svg")},
-        centerData:{type:0,name:'订单详情'},
-        rightData:{type:1,name:''},
+      barType: "0",
+      barText: {
+        leftData: { type: 1, name: require("@/assets/imagea/blackup.svg") },
+        centerData: { type: 0, name: "订单详情" },
+        rightData: { type: 1, name: "" }
       },
       blackup: require("@/assets/imagea/blackup.svg"),
       ordersList: [],
-      params: { 
-        status: "4" ,
-        pageIndex:1,
-        pageSize:20,
+      params: {
+        status: "4",
+        pageIndex: 1,
+        pageSize: 20
       }
     };
   },
-  mounted () {},
-  created () {
+  mounted() {},
+  created() {
     this.getList();
   },
   methods: {
-     getList() {
-        ajax({
+    getList() {
+      ajax({
         url: "order-api-impl/order/getOrderinfoPageByStatus",
         optionParams: this.params
       })
         .post()
         .then(response => {
           if (response.code === 200) {
-            this.ordersList = response.data.records ? response.data.records : [];
-            // this.pages = response.data.pages;
-            
+            this.ordersList = response.data.records
+              ? response.data.records
+              : [];
           } else {
             console.log(response);
           }
@@ -91,9 +86,8 @@ export default {
         .catch(error => {
           console.log(error);
         });
-      },
-  },
-
+    }
+  }
 };
 </script>
 

@@ -1,8 +1,7 @@
 <template>
   <div style="background: white;" class="main">
     <!-- 黄色div -->
-       <top :pageType="1"></top>  
-   
+    <top :pageType="1"></top>
     <div class="yeBox"></div>
 
     <!-- 轮播图区域 -->
@@ -17,22 +16,8 @@
       <div class="investproTab investpro-next" id="investpro-next"></div>
     </div>
 
-    <!-- 滑动分类,勿删除防止哪天产品要求改回来 -->
-    <!-- <div class="swiper-container2">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide" v-for="item in goodslist" :key="item.id" @click="goCLS(item.id)">
-          <div class="box">
-            <img :src="item.imageAddress" alt="这是图" />
-          </div>
-          <span>{{ item.name }}</span>
-        </div>
-      </div>
-      <br />
-      <div class="swiper-scrollbar" id="sw2"></div>
-    </div> -->
-
-     <!-- 滑动分类,新 -->
-  <div class="swiper-container2">
+    <!-- 滑动分类,新 -->
+    <div class="swiper-container2">
       <div class="swiper-wrapper">
         <div class="swiper-slide" v-for="item in forwardTypeList" :key="item.id" @click="toPage(item)">
           <div class="box">
@@ -68,7 +53,7 @@
           </div>
         </div>
         <div class="swiper-wrapper">
-          <div class="swiper-slide" v-for="i in discountGoods" @click="toNew(i.id)" :key="i.id" >
+          <div class="swiper-slide" v-for="i in discountGoods" @click="toNew(i.id)" :key="i.id">
             <img :src="i.imageAddress" alt="这是图" />
             <div class="right">
               <p>{{ i.name }}</p>
@@ -93,11 +78,7 @@
           <span class="hm">{{io.name}}</span>
         </div>
         <div class="swiper-wrapper">
-          <!-- <div class="swiper-slide" v-for="(item, index) in io.childList" :key="index" @click="
-              $router.push({ path: '/goodsList', query: { id: item.id,val:item.name } })
-            " > -->
-            
-            <div class="swiper-slide" v-for="(item, index) in io.childList" :key="index" @click="toGoodsList(item.name)" >
+          <div class="swiper-slide" v-for="(item, index) in io.childList" :key="index" @click="toGoodsList(item.name)">
             <div class="box">
               <img :src="item.imageAddress" alt />
             </div>
@@ -131,8 +112,8 @@ export default {
       bannerList: [], //轮播图
       goodslist: [], //商品分类 （误删除防止哪天产品要求改回来）
       discountGoods: [], //打折商品
-      noticePOList:[], //垂直公告
-      forwardTypeList:[] //商品分类 新
+      noticePOList: [], //垂直公告
+      forwardTypeList: [] //商品分类 新
     };
   },
   computed: {},
@@ -146,7 +127,7 @@ export default {
         speed: 2000,
         autoplay: {
           delay: 3000, //1秒切换一次
-          disableOnInteraction: false, //用户滑动之后，可以继续自动播放
+          disableOnInteraction: false //用户滑动之后，可以继续自动播放
         },
         loop: true,
         pagination: {
@@ -184,7 +165,7 @@ export default {
         slidesPerView: 1,
         autoplay: {
           delay: 2500, //1秒切换一次
-          disableOnInteraction: false, //用户滑动之后，可以继续自动播放
+          disableOnInteraction: false //用户滑动之后，可以继续自动播放
         },
         loop: true,
         direction: "vertical" //垂直方向
@@ -219,11 +200,11 @@ export default {
             this.goodslist = res.data ? res.data.goodsType.menuList : {};
             this.bannerList = res.data ? res.data.bannerList : {};
             this.discountGoods = res.data ? res.data.discountGoods : {};
-            this.noticePOList = res.data?res.data.noticePOList:{};
-            this.forwardTypeList = res.data?res.data.forwardTypeList:{};
+            this.noticePOList = res.data ? res.data.noticePOList : {};
+            this.forwardTypeList = res.data ? res.data.forwardTypeList : {};
           } else {
             console.log(res);
-          } 
+          }
         })
         .catch(error => {
           console.log(error);
@@ -232,50 +213,47 @@ export default {
     toNew(id) {
       this.$router.push({ path: "/index/detail", query: { id: id } });
     },
-    //保留，防止改需求
-    // goCLS(type) {
-    //   let tmpType = type;
-    //   this.$router.push({ path: "/cls", query: { type: tmpType } });
-    // },
-    toPage(item){
-        if(item.jumpWay === 1){
-            //判断是否跳外部链接
-        if(item.level === 1){
-            this.$router.push({ path: "/cls", query: { type: item.id, level:item.level } });
-        }else if(item.level === 2){
-            let parentIds = item.parentIds;
-            let arr = [];
-            arr = parentIds.split(',');
-            let id = arr[0]*1;
-             this.$router.push({ path: "/cls", query: { type: id, level:item.level } });
-        }else{
-            // this.$router.push({ path: "/goodsList", query: { val: item.name } });
-            
-            this.toGoodsList(item.name)
-        }}else{
-            console.log(item.url)
-            window.location.href =item.url;
+    toPage(item) {
+      if (item.jumpWay === 1) {
+        //判断是否跳外部链接
+        if (item.level === 1) {
+          this.$router.push({
+            path: "/cls",
+            query: { type: item.id, level: item.level }
+          });
+        } else if (item.level === 2) {
+          let parentIds = item.parentIds;
+          let arr = [];
+          arr = parentIds.split(",");
+          let id = arr[0] * 1;
+          this.$router.push({
+            path: "/cls",
+            query: { type: id, level: item.level }
+          });
+        } else {
+          this.toGoodsList(item.name);
         }
+      } else {
+        console.log(item.url);
+        window.location.href = item.url;
+      }
     },
-    toGoodsList(name,type){
-        //跳转至商品列表
-        this.$router.push({ path: "/goodsList"});
-        localStorage.setItem("val", name)
-        console.log(type)
-        if(type != undefined){
-            localStorage.setItem("selectHotGoods", type)
-        }
+    toGoodsList(name, type) {
+      //跳转至商品列表
+      this.$router.push({ path: "/goodsList" });
+      localStorage.setItem("val", name);
+      console.log(type);
+      if (type != undefined) {
+        localStorage.setItem("selectHotGoods", type);
+      }
     }
   },
-
   filters: {},
   components: {
     foot,
     top
   }
 };
-
-//
 </script>
 <style lang='scss' scoped>
 @import "./scss/index.scss";

@@ -2,11 +2,7 @@
   <div class="main">
     <!-- 上部红色区域 -->
     <div class="bannerShow">
-      <top
-        :barType="barType"
-        :barText="barText"
-        @subSave="submit($route.query.id * 1)"
-      ></top>
+      <top :barType="barType" :barText="barText" @subSave="submit($route.query.id * 1)"></top>
       <blank></blank>
     </div>
 
@@ -47,7 +43,7 @@
         </div>
         <div class="leftCame">
           <div class="imgC">
-            <img :src="camera" alt="" @click="sheetVisible = !sheetVisible;actions = actions1;"/>
+            <img :src="camera" alt="" @click="sheetVisible = !sheetVisible;actions = actions1;" />
           </div>
           <div class="camera_text">
             <span>上传凭证</span>
@@ -90,22 +86,9 @@
 
     <!-- 上传照片 -->
     <mt-actionsheet :actions="actions" v-model="sheetVisible"> </mt-actionsheet>
-    <input
-      v-show="false"
-      ref="filElem1"
-      accept="image/*"
-      type="file"
-      capture="camera"
-      @change="getFile(1)"
-    />
-    <input
-      v-show="false"
-      ref="filElem2"
-      type="file"
-      accept="image/png,image/gif,image/jpeg"
-      class="upload-file"
-      @change="getFile(2)"
-    />
+    <input v-show="false" ref="filElem1" accept="image/*" type="file" capture="camera" @change="getFile(1)" />
+    <input v-show="false" ref="filElem2" type="file" accept="image/png,image/gif,image/jpeg" class="upload-file"
+      @change="getFile(2)" />
   </div>
 </template>
 
@@ -157,7 +140,7 @@ export default {
         returnPic: ""
       },
       imgSrc: [],
-      inputFile:[]
+      inputFile: []
     };
   },
   created() {
@@ -236,7 +219,6 @@ export default {
     },
     popCancel() {
       this.popupVisible = false;
-      //   this.reason.backDescription = null;
     },
     change(item) {
       //单选
@@ -247,11 +229,12 @@ export default {
       this.reason = item;
     },
     getFile(type) {
-      let that = this,inputFile;
-      if(type == 1){
-           inputFile = this.$refs.filElem1.files[0];
-      }else{
-           inputFile = this.$refs.filElem2.files[0];
+      let that = this,
+        inputFile;
+      if (type == 1) {
+        inputFile = this.$refs.filElem1.files[0];
+      } else {
+        inputFile = this.$refs.filElem2.files[0];
       }
       console.log(inputFile);
       if (
@@ -263,12 +246,10 @@ export default {
         return;
       }
       this.param.returnPic = inputFile;
-      console.log(this.param.returnPic)
+      console.log(this.param.returnPic);
       let reader = new FileReader();
       reader.readAsDataURL(inputFile);
       reader.onload = function(e) {
-        // alert('a')
-        // console.log("this.result==", this.result);
         that.imgSrc.push(this.result);
       };
     },

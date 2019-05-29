@@ -7,16 +7,11 @@
     <!-- 左边按钮区域 -->
     <div class="navLeft" id="navLeft">
       <ul>
-        <li
-          v-for="(item, index) in ListOne"
-          class="default"
-          @click="
+        <li v-for="(item, index) in ListOne" class="default" @click="
             selectActive(item.id);
             getListTwo(item.id);
           "
-          :class="[activeIndex === item.id ? 'active' : '']"
-          :key="index"
-        >
+          :class="[activeIndex === item.id ? 'active' : '']" :key="index">
           {{ item.name }}
           <span v-if="activeIndex === item.id"></span>
         </li>
@@ -65,9 +60,10 @@ export default {
   },
   mounted() {
     this.loadSize();
-
     setTimeout(() => {
-      this.activeIndex = this.$route.query.type? this.$route.query.type : this.loadNum;
+      this.activeIndex = this.$route.query.type
+        ? this.$route.query.type
+        : this.loadNum;
       this.getListTwo(this.activeIndex);
       console.log(this.activeIndex);
     }, 500);
@@ -141,10 +137,10 @@ export default {
           console.log(error);
         });
     },
-    toGoodsList(name){
-        //跳转至商品列表
-        this.$router.push({ path: "/goodsList"});
-        localStorage.setItem("val", name)
+    toGoodsList(name) {
+      //跳转至商品列表
+      this.$router.push({ path: "/goodsList" });
+      localStorage.setItem("val", name);
     }
   }
 };

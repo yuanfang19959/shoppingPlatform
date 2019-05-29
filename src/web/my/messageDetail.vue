@@ -2,13 +2,6 @@
   <div class="main">
     <!-- 上部红色区域 -->
     <div class="bannerShow">
-      <!--<img
-        class="blackup"
-        :src="blackup"
-        alt=""
-        @click="$router.push('/my/index')"
-      />
-      <span class="center_1">消息详情</span>-->
       <top :barType="barType" :barText="barText"></top>
     </div>
     <blank></blank>

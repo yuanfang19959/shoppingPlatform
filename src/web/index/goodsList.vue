@@ -24,17 +24,12 @@
           <!-- 单个商品区域 -->
           <div class="goods" @click="toNew(i.goodsId)" v-for='i in list'>
             <div class="imgContainer">
-              <!--<img src="@/assets/imagea/goods.png" alt="商品图片" />-->
               <img class="goodsImg" :src="i.imageAddress" alt="商品图片" />
             </div>
 
             <div class="rightInfo">
               <p>{{i.goodsName}}</p>
               <span class="kg">{{i.explains}}</span>
-              <div class="tips">
-                <!-- <span>{{i.niceCommentRate}}折</span> -->
-                <!--<span >{{i.niceCommentRate|niceCommentRateFilter}}折</span>-->
-              </div>
               <div class="bottom">
                 <span class="s1">
                   ¥{{i.price}}
@@ -89,13 +84,6 @@ export default {
           src: require("@/assets/imagea/goodslist/list.svg"),
           src2: require("@/assets/imagea/goodslist/listr.svg")
         }
-        // {
-        //   id: 1004,
-        //   name: "筛选",
-        //   type:0,
-        //   src: require("@/assets/imagea/goodslist/funnel.svg"),
-        //   src2: require("@/assets/imagea/goodslist/funnelr.svg")
-        // }
       ],
 
       params: {
@@ -114,7 +102,6 @@ export default {
   },
   mounted() {
     this.wrapperHeight = document.documentElement.clientHeight - this.$refs.wrapper.getBoundingClientRect().top;
-    // let val = this.$route.query.val;
     let val = localStorage.getItem("val")
     let type = localStorage.getItem("selectHotGoods")*1; //若local不存在selectHotGoods 会自动转为0
     if(type != 0){
@@ -262,11 +249,9 @@ export default {
     },
     handleTopChange(status) {
       this.topStatus = status;
-      // console.log("this.handleTopChange==",this.topStatus);
     },
     handleBottomChange(status) {
       this.bottomStatus = status;
-      // console.log("this.bottomStatus==",this.bottomStatus);
     },
     loadtop() {
       setTimeout(() => {
@@ -313,7 +298,6 @@ export default {
     }
   },
   created() {
-    // this.getGoodslist();
     this.newMessage();
   },
   components: {

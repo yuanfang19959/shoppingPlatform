@@ -1,15 +1,6 @@
 <template>
   <div>
     <div class="breadcrumb" v-if="!isWeiXi">
-      <!--<span class="center_input">
-        <img class="searchimg" :src="searchimg" alt="" />
-        <div class="searchinput_layer">
-          <input class="searchinput" type="text" :placeholder="value" 
-          v-model="value" @keyup.enter="searching(value)" @click="setnull"
-          />
-        </div>
-      </span>
-      <span class="cancel" @click="$router.push('/my/collection')">取消</span>-->
       <top :barType='barType' :barText='barText' @subSave='subSave' @inputSub="inputSub"></top>
     </div>
 
@@ -70,32 +61,31 @@
     </div>
   </div>
 
-<!-- 商品信息 -->
+  <!-- 商品信息 -->
 
 </template>
 
 <script>
-// import isWeiXin from '@/assets/js/commin';
-import ajax from '@utils/config';
+import ajax from "@utils/config";
 import { Toast } from "mint-ui";
 import top from "@/components/header2.vue";
 import blank from "@/components/blank.vue";
 export default {
-  components:{
+  components: {
     top,
     blank
   },
   data() {
     return {
-      barType:'1',  
-      barText:{
-        leftData:{type:0,name:'搜索收藏夹'},
-        centerData:{type:0,name:'取消'},
-        rightData:{type:0,name:'取消'},
+      barType: "1",
+      barText: {
+        leftData: { type: 0, name: "搜索收藏夹" },
+        centerData: { type: 0, name: "取消" },
+        rightData: { type: 0, name: "取消" }
       },
-      value:"搜索收藏夹",  
+      value: "搜索收藏夹",
       flag: false,
-      showContent:false,
+      showContent: false,
       img: require("@/assets/imagea/blackup.svg"),
       imgR: require("@/assets/imagea/msgimg.svg"),
       indextopImg: require("@/assets/imagea/indextopImg.svg"), //首页图标 pageType 1
@@ -109,15 +99,11 @@ export default {
         { name: "骑车" },
         { name: "挡风玻璃" }
       ],
-      searchinput:"",
+      searchinput: ""
     };
   },
-  mounted(){
-      this.load();
-  },
-  created() {
-    // this.isWeiXi = isWeiXin();
-    // console.log(window.location.href);
+  mounted() {
+    this.load();
   },
   computed: {
     list() {
@@ -137,56 +123,55 @@ export default {
     }
   },
   methods: {
-    inputSub(val){
-      // this.searchinput=val;
-      if(!val){
-        Toast("请输入搜索关键字~")
+    inputSub(val) {
+      if (!val) {
+        Toast("请输入搜索关键字~");
         return;
       }
-      this.$router.push({path:'/my/collection',query:{name:val}});
+      this.$router.push({ path: "/my/collection", query: { name: val } });
     },
-    subSave(){
-
-      this.$router.push({path:'/my/collection',query:{name:''}})
+    subSave() {
+      this.$router.push({ path: "/my/collection", query: { name: "" } });
     },
     //清楚历史记录
     clearHistory() {
       this.flag = !this.flag;
       this.history = null;
     },
-    searching(value){
-          this.history.push({name:value})
-          this.flag=true;
-          this.showContent =true;
+    searching(value) {
+      this.history.push({ name: value });
+      this.flag = true;
+      this.showContent = true;
     },
-    setnull(){
-        this.value = null;
+    setnull() {
+      this.value = null;
     },
-    load(){//判断历史记录的长度，如果是空的则不显示
-        if(this.history.length ===0)
-        {
-            this.flag = true;
-        }
+    load() {
+      //判断历史记录的长度，如果是空的则不显示
+      if (this.history.length === 0) {
+        this.flag = true;
+      }
     },
-      toNew() {
+    toNew() {
       this.$router.push({ path: "/my/detail" });
     },
     getList() {
-            ajax({
-                url: 'tAppUser/userInfo',
-                optionParams: {}
-            }).post()
-            .then(response => {
-                if (response.code === 200) {
-                    this.balance = response.data.balance;
-                } else {
-                    console.log(response)
-                }
-            })
-            .catch(error => {
-                console.log(error)
-            })
-      },
+      ajax({
+        url: "tAppUser/userInfo",
+        optionParams: {}
+      })
+        .post()
+        .then(response => {
+          if (response.code === 200) {
+            this.balance = response.data.balance;
+          } else {
+            console.log(response);
+          }
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    }
   }
 };
 </script>

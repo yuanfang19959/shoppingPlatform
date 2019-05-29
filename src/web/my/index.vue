@@ -57,7 +57,7 @@
     <div class="my_order">
       <div class="my_order_top">
         <div class="my_order_top_title">我的订单</div>
-        <div class="my_order_top_btn"  @click='goOrder(-2)'>
+        <div class="my_order_top_btn" @click='goOrder(-2)'>
           查看全部
         </div>
       </div>
@@ -68,12 +68,12 @@
           <div class="item_li">待付款</div>
         </li>
         <li @click='goOrder(1,2)'>
-          <span class="number">{{userOrderInfo.waitSendOrderCount|zeroFilter}}</span>  
+          <span class="number">{{userOrderInfo.waitSendOrderCount|zeroFilter}}</span>
           <img :src="order2" alt="" />
           <div class="item_li">待发货</div>
         </li>
         <li @click='goOrder(2,3)'>
-          <span class="number">{{userOrderInfo.waitReceiveOrderCount|zeroFilter}}</span>  
+          <span class="number">{{userOrderInfo.waitReceiveOrderCount|zeroFilter}}</span>
           <img :src="order2" alt="" />
           <div class="item_li">待收货</div>
         </li>
@@ -131,8 +131,7 @@ import loginout from "@/assets/js/loginout";
 import { Toast } from "mint-ui";
 export default {
   components: {
-    foot,
-   
+    foot
   },
   data() {
     return {
@@ -155,8 +154,8 @@ export default {
       coupon: require("@/assets/imagea/my/coupon.svg"),
       shengfenzheng: require("@/assets/imagea/my/shengfenzheng.svg"),
       zuanshi: require("@/assets/imagea/my/zuanshi.svg"),
-      userInfo:{}, 
-      userOrderInfo:{},
+      userInfo: {},
+      userOrderInfo: {}
     };
   },
   computed: {},
@@ -168,63 +167,65 @@ export default {
     // 退出登录
     loginout() {
       ajax({
-        url: 'member-api-impl/longin/logout',
+        url: "member-api-impl/longin/logout",
         optionParams: {}
-      }).post()
+      })
+        .post()
         .then(response => {
           if (response.code === 200) {
             // this.balance = response.data.balance;
             Toast("退出登录成功");
           } else {
-            console.log(response)
+            console.log(response);
           }
-
         })
         .catch(error => {
-          console.log(error)
-        })
-        
+          console.log(error);
+        });
+
       loginout();
     },
     getInfoData() {
       ajax({
-        url: 'member-api-impl/user/myHome',
+        url: "member-api-impl/user/myHome",
         optionParams: {}
-      }).post()
+      })
+        .post()
         .then(res => {
           if (res.code === 200) {
-            this.userInfo=res.data.userInfo?res.data.userInfo:{};
-            this.userOrderInfo=res.data.userOrderInfo?res.data.userOrderInfo:{};
-             
+            this.userInfo = res.data.userInfo ? res.data.userInfo : {};
+            this.userOrderInfo = res.data.userOrderInfo
+              ? res.data.userOrderInfo
+              : {};
           } else {
-            console.log(res)
+            console.log(res);
           }
-
         })
         .catch(error => {
-          console.log(error)
-        })
-    }, 
-    goOrder(type,index){
+          console.log(error);
+        });
+    },
+    goOrder(type, index) {
       let tmpType = type;
-      if(type === -2){
-          this.$router.push('/order')
-      }else{
-          this.$router.push({path:'/order',query:{type:tmpType,iindex:index}})
+      if (type === -2) {
+        this.$router.push("/order");
+      } else {
+        this.$router.push({
+          path: "/order",
+          query: { type: tmpType, iindex: index }
+        });
       }
     },
     gomyCard() {
       Toast("程序猿开发中~");
-    },   
-    
+    }
   },
 
-
   filters: {
-    zeroFilter(val){
-      if(val==0){
-        return '';
-      }else{
+    zeroFilter(val) {
+      if (val == 0) {
+        return "";
+      } else {
         return val;
       }
     }

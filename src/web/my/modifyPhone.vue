@@ -2,13 +2,6 @@
   <div class="main">
     <!-- 上部红色区域 -->
     <div class="bannerShow">
-      <!--<img
-        class="blackup"
-        :src="blackup"
-        alt=""
-        @click="$router.push('/my/index')"
-      />
-      <span>更改绑定</span>-->
       <top :barType='barType' :barText='barText'></top>
       <blank></blank>
     </div>
@@ -28,7 +21,6 @@
       <!-- 输入框 -->
       <div class="inputBox">
         <input type="text" v-model="form.newPhone" placeholder="请输入新手机号"  maxlength="11" />
-         <!--<img :src="deleteP" alt="" @click="clear" /> -->
       </div>
 
       <div class="inputBox">
@@ -88,13 +80,6 @@ export default {
     
   },
   methods: {
-    // saveSuccess() {
-    //   Toast({
-    //     message: "保存成功",
-    //     duration: 1500,
-    //      position: 'bottom',
-    //   });
-    // },
     // 获取图形验证码
       getImgcode() {
         ajax({
@@ -103,7 +88,6 @@ export default {
         }).post()
           .then(response => {
             if (response.code === 200) {
-              // this.params.imagecCode=response.data[0];
               this.form.margCode = response.data[0];
               this.yzm = 'data:image/png;base64,' + response.data[1];
             } else {
@@ -124,7 +108,6 @@ export default {
   
   getphonecodeId() {
         let phone = this.form.newPhone,imageCode=this.form.imageCode;
-        // console.log("phone==",phone);
         if (!phone) {
           Toast("手机号码不能为空");
           return;
@@ -160,9 +143,7 @@ export default {
         }).post()
           .then(response => {
             if (response.code === 200) {
-              
             } else {
-              // this.$message.error(response.message);
             }
 
           })
@@ -173,7 +154,6 @@ export default {
       },
       submitForm(){
         let phone = this.form.newPhone;
-        // console.log("phone==",phone);
         if (!phone) {
           Toast("手机号码不能为空");
           return;

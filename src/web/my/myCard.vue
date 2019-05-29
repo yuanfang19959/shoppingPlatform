@@ -3,39 +3,8 @@
     <!-- 上部红色区域 -->
     <top :barType='barType' :barText='barText'></top>
     <blank></blank>
-    <!--<div class="bannerShow">
-      <img
-        class="blackup"
-        :src="blackup"
-        alt=""
-        @click="$router.push('/my/index')"
-      />
-      <span>我的卡券</span>
-    </div>-->
 
     <div class="content">
-      <!-- 一张卡片主体 -->
-      <!-- <div class="oneCard">
-        <div class="card">
-          <img :src="card" alt="" />
-        </div> -->
-      <!-- 卡卷内容需要定位 -->
-      <!-- <div class="cardText">
-          <div class="left">
-            <span class="s0"><span class="s0_1">¥</span>30</span>
-            <div class="left_r">
-              <span class="s1">果蔬生专用券</span>
-              <span class="s2">满200使用</span>
-              <span class="s3">2019.3.19——2019.5.19</span>
-            </div>
-          </div>
-          <div class="line"></div>
-          <div class="right">
-            立即使用
-          </div>
-        </div>
-      </div> -->
-
       <!-- 一张卡片主体 -->
       <div class="oneCard" v-for="item in cardList" :key="item.id">
         <div class="card">
@@ -45,9 +14,7 @@
         <!-- 卡卷内容需要定位 -->
         <div class="cardText">
           <div class="left">
-            <span class="s0"
-              ><span class="s0_1">¥</span>{{ item.Denomination }}</span
-            >
+            <span class="s0"><span class="s0_1">¥</span>{{ item.Denomination }}</span>
             <div class="left_r">
               <span class="s1">{{ item.type }}</span>
               <span class="s2">{{ item.condition }}</span>
@@ -60,28 +27,6 @@
           </div>
         </div>
       </div>
-      <!-- 一张卡片主体
-      <div class="oneCard">
-        <div class="card">
-          <img :src="card" alt="" />
-        </div>
-
-        卡卷内容需要定位
-        <div class="cardText">
-          <div class="left">
-            <span class="s0"><span class="s0_1">¥</span>3000</span>
-            <div class="left_r">
-              <span class="s1">果蔬生专用券</span>
-              <span class="s2">满3000.01使用</span>
-              <span class="s3">2019.3.19——2019.5.19</span>
-            </div>
-          </div>
-          <div class="line"></div>
-          <div class="right">
-            立即使用
-          </div>
-        </div>
-      </div>  -->
     </div>
 
     <div class="bottom" v-show="!flag">没有更多了</div>
@@ -91,22 +36,22 @@
 
 <script>
 import { Toast } from "mint-ui";
-import ajax from '@utils/config';
+import ajax from "@utils/config";
 import top from "@/components/header2.vue";
 import blank from "@/components/blank.vue";
 export default {
   components: {
     top,
-    blank,
+    blank
   },
   data() {
     return {
-      flag:false,  
-      barType:'0',  
-      barText:{
-        leftData:{type:1,name:require("@/assets/imagea/blackup.svg")},
-        centerData:{type:0,name:'我的卡券'},
-        rightData:{type:1,name:''},
+      flag: false,
+      barType: "0",
+      barText: {
+        leftData: { type: 1, name: require("@/assets/imagea/blackup.svg") },
+        centerData: { type: 0, name: "我的卡券" },
+        rightData: { type: 1, name: "" }
       },
       blackup: require("@/assets/imagea/blackup.svg"),
       head: require("@/assets/imagea/head.svg"),
@@ -137,31 +82,30 @@ export default {
       ]
     };
   },
-  mounted(){
-
-  },
-  methods:{
-      load(){
-          if(cardList.length != 0){
-              this.flag = false
+  mounted() {},
+  methods: {
+    load() {
+      if (cardList.length != 0) {
+        this.flag = false;
+      }
+    },
+    getList() {
+      ajax({
+        url: "tAppUser/userInfo",
+        optionParams: {}
+      })
+        .post()
+        .then(response => {
+          if (response.code === 200) {
+            this.balance = response.data.balance;
+          } else {
+            console.log(response);
           }
-      },
-      getList() {
-            ajax({
-                url: 'tAppUser/userInfo',
-                optionParams: {}
-            }).post()
-            .then(response => {
-                if (response.code === 200) {
-                    this.balance = response.data.balance;
-                } else {
-                    console.log(response)
-                }
-            })
-            .catch(error => {
-                console.log(error)
-            })
-      },
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    }
   }
 };
 </script>

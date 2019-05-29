@@ -167,9 +167,6 @@ export default {
           if (!validatPhone(phone)) {
             Toast("手机格式不正确");
             return;
-          } else {
-            // console.log("1111");
-
           }
         }
       if(!code){
@@ -221,14 +218,11 @@ export default {
       this.show = false;
     },
     confirmFn(val) {
-      // console.log(val)
       this.show = false;
       this.popupVisible = false;
       this.defaultData = [val.select1];
       this.addrDataList.map((item,index)=>{
         if(index>this.iindex){
-          // console.log("this.iindex==",this.iindex,"index===",);
-          // console.log("222");
           item.name='未设置';
           item.code='未设置';
         }else if(index==this.iindex){
@@ -265,7 +259,6 @@ export default {
               tmpData.push({text:item.provinceName,value:item.id});
             })
             this.pickData.data1=tmpData;
-            // console.log("this.Pdata==",this.Pdata);
           } else {
             console.log(response)
           }
@@ -284,7 +277,6 @@ export default {
         .then(res => {
           if (res.code === 200) {
             Toast("删除成功");
-            // this.addrData=res.data?res.data:{};
             if(this.$route.query.pageType){
                   this.$router.push("/my/address?pageType=1");
               }else{

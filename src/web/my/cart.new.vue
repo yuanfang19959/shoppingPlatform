@@ -10,12 +10,10 @@
     </div>
     <div class="clear"></div>
     <div class="totalNum">
-      共<i>{{ this.allgoodsCount }}</i
-      >件
+      共<i>{{ this.allgoodsCount }}</i>件
     </div>
     <div class="cart_list">
       <ul v-for="(i, a) in cartList" :key="a">
-        <!-- <div class="supName">{{i.supplierName}}</div> --> 
         <!-- 注销的是供应商名称 -->
         <li class="" v-for="(item, b) in i.goodsList" :key="b">
           <div class="flexbox itemFirst">
@@ -23,38 +21,22 @@
               <img :src="checked" v-show="!item.ischecked" alt="" />
               <img :src="checkedH" v-show="item.ischecked" alt="" />
             </div>
-            <div
-              class="goodsImg"
-              @click="
+            <div class="goodsImg" @click="
                 $router.push({ path: '/index/detail', query: { id: item.id } })
-              "
-            >
+              ">
               <img :src="item.detailImageAddress" alt="商品图" />
             </div>
             <div class="goodsText">
               <div class="goodsTextDis">{{ item.name }}</div>
               <div class="netContent">净含量{{ item.weight }}</div>
-              <!--<div class="netContent">净含量{{ item.weight }}克</div>-->
               <div class="flexbox goodsTextR">
                 <span class="flex1 priceNum">￥{{ item.price }}</span>
                 <span class="addORsub">
-                  <img
-                    @click="cartOpera(a, b, 0, item.id, item.supplierId)"
-                    :src="cartJia"
-                    alt=""
-                  />
+                  <img @click="cartOpera(a, b, 0, item.id, item.supplierId)" :src="cartJia" alt="" />
                   <span class="span_input">
-                    <input
-                      type="number"
-                      placeholder="1"
-                      v-model="item.shopCarNum"
-                    />
+                    <input type="number" placeholder="1" v-model="item.shopCarNum" />
                   </span>
-                  <img
-                    @click="cartOpera(a, b, 1, item.id, item.supplierId)"
-                    :src="cartJian"
-                    alt=""
-                  />
+                  <img @click="cartOpera(a, b, 1, item.id, item.supplierId)" :src="cartJian" alt="" />
                 </span>
               </div>
             </div>
@@ -63,10 +45,7 @@
             <div class="navImg">
               <img :src="dingwei" alt="" />
             </div>
-            <div
-              class="selectVillage flex3"
-              @click="$router.push('/my/selectVillage')"
-            >
+            <div class="selectVillage flex3" @click="$router.push('/my/selectVillage')">
               <div>
                 选择帮扶村
               </div>
@@ -233,7 +212,6 @@ export default {
       this.allgoodsCount = count;
       tmpTotal = Math.round(tmpTotal * 100) / 100; //解决多个浮点数累加导致小数点后无限位数的问题
       this.totalNum = tmpTotal;
-      //   console.log(this.totalNum)
     },
     // 全选
     checkAll() {
@@ -327,7 +305,7 @@ export default {
         .then(res => {
           if (res.code === 200) {
             Toast("收藏夹等你哦！");
-            this.delData();//加入收藏成功删除购物车的商品列表
+            this.delData(); //加入收藏成功删除购物车的商品列表
           } else {
             console.log(res);
           }
@@ -369,21 +347,27 @@ export default {
     },
 
     //测试用 可等结算接口正常后删除
-    buyRightNow(){
-        let temp = [],
+    buyRightNow() {
+      let temp = [],
         isWantBuy = false; //看是否有商品被选中，选中可以进行页面跳转 否则不行
-        //存放多选商品id {id：商品id，count：商品数量} 存入localstorage中 
-        //多选商品时，可将数组传给商品接口，离开确认订单页面时。将localsotorage删除，不影响重复提交。
-        this.cartList.map(item=>{
-            item.goodsList.forEach(i=>{
-                if(i.ischecked){
-                    temp.push({id:i.id,count:i.shopCarNum,supplierId:i.supplierId})
-                    isWantBuy = true;
-                }
-            })
-        })
-        localStorage.setItem("goodArr",JSON.stringify(temp))
-        isWantBuy?this.$router.push('/confirmTest'):Toast("您没有选择宝贝哦！")
+      //存放多选商品id {id：商品id，count：商品数量} 存入localstorage中
+      //多选商品时，可将数组传给商品接口，离开确认订单页面时。将localsotorage删除，不影响重复提交。
+      this.cartList.map(item => {
+        item.goodsList.forEach(i => {
+          if (i.ischecked) {
+            temp.push({
+              id: i.id,
+              count: i.shopCarNum,
+              supplierId: i.supplierId
+            });
+            isWantBuy = true;
+          }
+        });
+      });
+      localStorage.setItem("goodArr", JSON.stringify(temp));
+      isWantBuy
+        ? this.$router.push("/confirmTest")
+        : Toast("您没有选择宝贝哦！");
     }
   },
 

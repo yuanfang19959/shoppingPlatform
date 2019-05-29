@@ -2,13 +2,6 @@
   <div class="main">
     <!-- 上部红色区域 -->
     <div class="bannerShow">
-      <!--<img
-        class="blackup"
-        :src="blackup"
-        alt=""
-        @click="$router.push('/my/index')"
-      />
-      <span class="center_1">编辑留言</span>-->
       <top :barType="barType" :barText="barText"></top>
       <blank></blank>
     </div>
@@ -22,12 +15,7 @@
           <input type="text" placeholder="标题(必填)" v-model="inputValue" />
         </div>
         <div class="middle">
-          <textarea
-            placeholder="正文(必填，15~200字)"
-            maxlength="200"
-            minlength="15"
-            v-model="textValue"
-          ></textarea>
+          <textarea placeholder="正文(必填，15~200字)" maxlength="200" minlength="15" v-model="textValue"></textarea>
         </div>
       </div>
       <div class="btn" @click="submit">完成</div>
@@ -76,7 +64,7 @@ export default {
       ajax({
         url: "member-api-impl/message/replyMessageTalk",
         optionParams: {
-          mainBody:this.textValue,
+          mainBody: this.textValue,
           receiveUserId: this.msgId,
           title: this.inputValue
         }
@@ -96,8 +84,8 @@ export default {
     submit() {
       if (this.inputValue.length >= 1) {
         if (this.textValue.length >= 15) {
-         this.pushContent();
-         this.$router.go(-1);
+          this.pushContent();
+          this.$router.go(-1);
         } else {
           Toast("内容最少15字！");
         }
@@ -116,7 +104,7 @@ export default {
     this.month = date.getMonth() + 1;
   },
   mounted() {
-    this.msgId = this.$route.query.id*1;
+    this.msgId = this.$route.query.id * 1;
   }
 };
 </script>
@@ -133,5 +121,4 @@ export default {
 .breadcrumb {
   height: 130px;
 }
-
 </style>

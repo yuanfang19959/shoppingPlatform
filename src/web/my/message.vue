@@ -2,14 +2,6 @@
   <div class="main">
     <!-- 上部红色区域 -->
     <div class="bannerShow">
-      <!--<img
-        class="blackup"
-        :src="blackup"
-        alt=""
-        @click="$router.push('/my/index')"
-      />
-      <span class="center_1">消息</span>
-      <span class="right_text">1条未读</span>-->
       <top :barType="barType" :barText="barText"></top>
       <blank></blank>
     </div>
@@ -17,15 +9,11 @@
     <!-- tabbar -->
     <div class="nav">
       <ul>
-        <li
-          v-for="(item, index) in list"
-          @click="
+        <li v-for="(item, index) in list" @click="
             selectActive(index);
             getMessageListByUserId(item.id);
           "
-          :class="[activeIndex === index ? 'default-active' : 'default']"
-          :key="index"
-        >
+          :class="[activeIndex === index ? 'default-active' : 'default']" :key="index">
           {{ item.name }}
         </li>
       </ul>
@@ -34,20 +22,15 @@
     <!-- message -->
     <div class="content" v-if="messageList.length !=0">
       <!-- 单个聊天 -->
-      <div
-        class="msBox"
-        v-for="item in messageList"
-        :key="item.message.id"
-        @click="
+      <div class="msBox" v-for="item in messageList" :key="item.message.id" @click="
           $router.push({
             path: '/messageDetail',
             query: { id: item.message.createUserId, types: item.message.types}
           })
-        "
-      >
+        ">
         <div class="msBox_left">
-           <img :src="logo" alt="这是头像" v-show="item.message.types === 1"/> 
-          <img :src="item.message.userImage" alt="这是头像" v-show="item.message.types != 1"/>
+          <img :src="logo" alt="这是头像" v-show="item.message.types === 1" />
+          <img :src="item.message.userImage" alt="这是头像" v-show="item.message.types != 1" />
           <span class="number" v-if="item.unreadCount != 0">{{ item.unreadCount }}</span>
         </div>
 
@@ -77,9 +60,13 @@ export default {
     return {
       barType: "0",
       barText: {
-        leftData: { type: 2, name: require("@/assets/imagea/blackup.svg"),path:"/index" },
+        leftData: {
+          type: 2,
+          name: require("@/assets/imagea/blackup.svg"),
+          path: "/index"
+        },
         centerData: { type: 0, name: "消息" },
-        rightData: { type: 0, name:"0条未读" }
+        rightData: { type: 0, name: "0条未读" }
       },
       ischecked: false,
       flag: false,
@@ -92,9 +79,9 @@ export default {
       checked: require("@/assets/imagea/checked.svg"),
       checkedH: require("@/assets/imagea/checkedH.svg"),
       garbage: require("@/assets/imagea/my/garbage.svg"),
-      logo:  require("@/assets/imagea/lg.png"),
+      logo: require("@/assets/imagea/lg.png"),
       activeIndex: 0,
-      newURL:"",
+      newURL: "",
       list: [
         {
           id: undefined,
@@ -110,45 +97,46 @@ export default {
         }
       ],
       messageList: [],
-      unreadMES:0,
+      unreadMES: 0
     };
   },
-  mounted() {
-  },
+  mounted() {},
   methods: {
     selectActive(index) {
       this.activeIndex = index;
     },
     getMessageListByUserId(id) {
       if (id != undefined) {
-       this.newURL = "member-api-impl/message/getMessageListByUserId?types="+id
-      }else{
-          this.newURL ="member-api-impl/message/getMessageListByUserId"
+        this.newURL =
+          "member-api-impl/message/getMessageListByUserId?types=" + id;
+      } else {
+        this.newURL = "member-api-impl/message/getMessageListByUserId";
       }
-        ajax({
-          url: this.newURL,
-          optionParams: {}
+      ajax({
+        url: this.newURL,
+        optionParams: {}
+      })
+        .post()
+        .then(response => {
+          if (response.code === 200) {
+            this.messageList = response.data ? response.data : {};
+            this.messageList.map(i => {
+              this.unreadMES += i.unreadCount;
+              console.log(this.unreadMES);
+            });
+            this.barText.rightData.name =
+              this.messageList[0].unreadCount + "条未读";
+          } else {
+            console.log(response);
+          }
         })
-          .post()
-          .then(response => {
-            if (response.code === 200) {
-              this.messageList = response.data ? response.data : {};
-              this.messageList.map(i=>{
-                  this.unreadMES+=i.unreadCount
-                  console.log(this.unreadMES)
-              })
-                this.barText.rightData.name = this.messageList[0].unreadCount + "条未读";
-            } else {
-              console.log(response);
-            }
-          })
-          .catch(error => {
-            console.log(error);
-          });
-    },
+        .catch(error => {
+          console.log(error);
+        });
+    }
   },
   created() {
-    this.getMessageListByUserId(undefined);//默认请求全部消息
+    this.getMessageListByUserId(undefined); //默认请求全部消息
   }
 };
 </script>

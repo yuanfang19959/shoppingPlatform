@@ -2,8 +2,6 @@
   <div class="main">
     <!-- 上部红色区域 -->
     <div class="bannerShow">
-      <!--<img class="blackup" :src="blackup" alt="" @click="$router.go(-1)" />
-      <span class="center_1">物流详情</span>-->
       <top :barType='barType' :barText='barText'></top>
       <blank></blank>
     </div>
@@ -24,10 +22,8 @@
         <img :src="pro" alt="" />
         <div class="contLeft">
           <span class="s1">{{expressVO.expressName}}</span>
-          <span class="s2"
-            >官方电话 <a :href="'tel:' + this.phone">{{expressVO.expressPhone}}</a>
-            <img :src="leftarrow" alt=""
-          /></span>
+          <span class="s2">官方电话 <a :href="'tel:' + this.phone">{{expressVO.expressPhone}}</a>
+            <img :src="leftarrow" alt="" /></span>
         </div>
       </div>
 
@@ -37,9 +33,7 @@
           <span id="foo">{{ orderInfo.expressTicket }}</span>
         </span>
         <img :src="copy" alt="" />
-        <span class="s4 btn" data-clipboard-target="#foo" @click="copyT"
-          >复制</span
-        >
+        <span class="s4 btn" data-clipboard-target="#foo" @click="copyT">复制</span>
       </div>
     </div>
 
@@ -53,17 +47,17 @@
         </div>
       </div>
 
-      <div class="cell"  v-if='tracesList[0]'>
+      <div class="cell" v-if='tracesList[0]'>
         <div class="cleft">
           <span class="s1">{{tracesList[0].acceptDay}}</span>
           <span class="s2">{{tracesList[0].acceptHour}}</span>
           <div class="bg">
             <img :src="gou" alt="" v-if='tracesList[0].acceptType==6' />
-            <img :src="paisr" alt="" v-if='tracesList[0].acceptType==5'/>
-            <img :src="yunshur" alt="" v-if='tracesList[0].acceptType==4'/>
-            <img :src="lanjian" alt="" v-if='tracesList[0].acceptType==3'/>
-            <img :src="fahuor" alt="" v-if='tracesList[0].acceptType==2'/>
-            <img :src="xiadanr" alt="" v-if='tracesList[0].acceptType==1'/>
+            <img :src="paisr" alt="" v-if='tracesList[0].acceptType==5' />
+            <img :src="yunshur" alt="" v-if='tracesList[0].acceptType==4' />
+            <img :src="lanjian" alt="" v-if='tracesList[0].acceptType==3' />
+            <img :src="fahuor" alt="" v-if='tracesList[0].acceptType==2' />
+            <img :src="xiadanr" alt="" v-if='tracesList[0].acceptType==1' />
           </div>
         </div>
         <div class="cright">
@@ -71,10 +65,10 @@
           <p v-for='item in tracesList[0].childTracesList' v-text='item.acceptStation'></p>
         </div>
       </div>
-      <span class="bts" @click="flag=true" v-show="!flag">点击查看更多详情<img :src="circleb" alt=""/></span>
+      <span class="bts" @click="flag=true" v-show="!flag">点击查看更多详情<img :src="circleb" alt="" /></span>
 
       <!-- 影藏的物流信息 -->
-      <div class="flagShow" v-show="flag"  v-if='tracesList[1]'>
+      <div class="flagShow" v-show="flag" v-if='tracesList[1]'>
         <div class="cell">
           <div class="cleft">
             <span class="s1">{{tracesList[1].acceptDay}}</span>
@@ -168,17 +162,17 @@ import Clipboard from "clipboard"; //复制内容插件
 import top from "@/components/header2.vue";
 import blank from "@/components/blank.vue";
 export default {
-  components:{
+  components: {
     top,
     blank
   },
   data() {
     return {
-      barType:'0',  
-      barText:{
-        leftData:{type:1,name:require("@/assets/imagea/blackup.svg")},
-        centerData:{type:0,name:'物流详情'},
-        rightData:{type:0,name:''},
+      barType: "0",
+      barText: {
+        leftData: { type: 1, name: require("@/assets/imagea/blackup.svg") },
+        centerData: { type: 0, name: "物流详情" },
+        rightData: { type: 0, name: "" }
       },
       copyNumber: "4185646874684678",
       alrFlag: false,
@@ -214,20 +208,17 @@ export default {
           pic: require("@/assets/imagea/meat.png")
         }
       ],
-      orderId:'',
-      detailList:[],//商品详情
-      expressVO:[],//快递公司信息
-      orderInfo:[],//订单信息
-      tracesList:[],//包裹详情轨迹
-
+      orderId: "",
+      detailList: [], //商品详情
+      expressVO: [], //快递公司信息
+      orderInfo: [], //订单信息
+      tracesList: [] //包裹详情轨迹
     };
   },
-  mounted(){
-    
-  },
-  created () {
+  mounted() {},
+  created() {
     // this.orderId= 28;
-    this.orderId= this.$route.query.orderId;
+    this.orderId = this.$route.query.orderId;
     this.getpagelist();
   },
   methods: {
@@ -248,40 +239,45 @@ export default {
       });
     },
     getpagelist() {
-        ajax({
-          url: 'order-api-impl/express/getOrderTraces',
-          optionParams: {orderId:this.orderId},
-        }).post()
-          .then(response => {
-            if (response.code === 200) {
-              // this.balance = response.data.balance;
-              this.detailList=response.data.detailList?response.data.detailList:[],//商品详情
-              this.expressVO=response.data.expressVO?response.data.expressVO:{},//快递公司信息
-              this.orderInfo=response.data.orderInfo?response.data.orderInfo:{};//订单信息
-              this.tracesList=response.data.tracesList?response.data.tracesList:[];//包裹详情轨迹
-            } else {
-              console.log(response)
-            }
-          })
-          .catch(error => {
-            console.log(error)
-          })
-      },
-  },
-  mounted() {
-    // setTimeout(function() {
-    //   this.alrFlag = false;
-    // }, 2000);
+      ajax({
+        url: "order-api-impl/express/getOrderTraces",
+        optionParams: { orderId: this.orderId }
+      })
+        .post()
+        .then(response => {
+          if (response.code === 200) {
+            // this.balance = response.data.balance;
+            (this.detailList = response.data.detailList
+              ? response.data.detailList
+              : []), //商品详情
+              (this.expressVO = response.data.expressVO
+                ? response.data.expressVO
+                : {}), //快递公司信息
+              (this.orderInfo = response.data.orderInfo
+                ? response.data.orderInfo
+                : {}); //订单信息
+            this.tracesList = response.data.tracesList
+              ? response.data.tracesList
+              : []; //包裹详情轨迹
+          } else {
+            console.log(response);
+          }
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    }
   },
   watch: {
-    alrFlag(a, b) { 
-      setTimeout(function(){
-        this.alrFlag = false;
-        console.log(this.alrFlag);
-      }.bind(this), 2500);
-    },
-
-    
+    alrFlag(a, b) {
+      setTimeout(
+        function() {
+          this.alrFlag = false;
+          console.log(this.alrFlag);
+        }.bind(this),
+        2500
+      );
+    }
   }
 };
 </script>

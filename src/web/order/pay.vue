@@ -1,13 +1,6 @@
 <template>
   <div class="mainCon">
     <div class="bannerShow">
-      <!--<img
-        class="blackup"
-        :src="blackup"
-        alt=""
-        @click="$router.push('/order')"
-      />
-      <span class="center_1">支付订单</span>-->
       <top :barType='barType' :barText='barText'></top>
       <blank></blank>
     </div>
@@ -21,28 +14,19 @@
 
     <!-- 支付方式 -->
     <div class="pay_way">
-      <div
-        class="pay_m1"
-        v-for="(i, index) in arr"
-        :key="i.id"
-        @click="change(index,arr)"
-      >
+      <div class="pay_m1" v-for="(i, index) in arr" :key="i.id" @click="change(index,arr)">
         <div class="left">
           <img :src="i.src" alt="" />
           <span>{{ i.name }}</span>
-          <span
-            class="card"
-            @click="flag=true"
-            v-show="setDefault == i.id ? true : false"
-            >{{bank}}<img :src="arbott" alt=""
-          /></span>
+          <span class="card" @click="flag=true" v-show="setDefault == i.id ? true : false">{{bank}}<img :src="arbott"
+              alt="" /></span>
         </div>
         <div class="right">
           <img :src="selectnull" alt="" v-show="!i.check" />
           <img :src="select" alt="" v-show="i.check" />
         </div>
       </div>
-      
+
     </div>
     <span class="btn" @click="pay">确认支付</span>
 
@@ -76,19 +60,19 @@ import { setInterval, clearInterval } from "timers";
 import top from "@/components/header2.vue";
 import blank from "@/components/blank.vue";
 export default {
-  components:{
+  components: {
     top,
     blank
   },
   data() {
     return {
-      barType:'0',  
-      barText:{
-        leftData:{type:1,name:require("@/assets/imagea/blackup.svg")},
-        centerData:{type:0,name:'支付订单'},
-        rightData:{type:1,name:''},
+      barType: "0",
+      barText: {
+        leftData: { type: 1, name: require("@/assets/imagea/blackup.svg") },
+        centerData: { type: 0, name: "支付订单" },
+        rightData: { type: 1, name: "" }
       },
-      lastindex:"",
+      lastindex: "",
       setDefault: 3,
       blackup: require("@/assets/imagea/blackup.svg"),
       sucBox: require("@/assets/imagea/sucBox.svg"),
@@ -97,7 +81,7 @@ export default {
       select: require("@/assets/imagea/c1.png"),
       selectnull: require("@/assets/imagea/c2.png"),
       flag: false,
-      bank:"请选择银行",
+      bank: "请选择银行",
       arr: [
         {
           name: "支付宝支付",
@@ -193,7 +177,7 @@ export default {
           console.log(error);
         });
     },
-    change(index,array) {
+    change(index, array) {
       array.forEach(item => {
         item.check = false;
       });
@@ -213,7 +197,7 @@ export default {
           duration: 2000
         });
         // this.flag = true;
-        this.$router.push('/paySuc')
+        this.$router.push("/paySuc");
       } else {
         Toast({
           message: "请选择一种支付方式",
@@ -231,8 +215,8 @@ export default {
       var pop = document.getElementById("pop");
       pop.style.height = divheight + "px";
     },
-    selectVal(index){
-        this.bank = this.list[index].name
+    selectVal(index) {
+      this.bank = this.list[index].name;
     }
   }
 };

@@ -5,7 +5,6 @@
       <headTop :barType="barType" :barText="barText"></headTop>
       <!--<blank></blank>-->
       <div class="receive">
-        <!-- <span>退款成功</span> -->
 
         <!-- 退货退款换态 1待退款 2已同意,退货中 3已退款 , -->
         <span v-if="orderReturnPO.backStatus == 1">待退款 </span>
@@ -50,7 +49,6 @@
           <div class="rightInfo">
             <p>{{ items.goodsName }}</p>
             <span class="kg">净含量{{ items.weight }}</span>
-            <!--<span class="kg">净含量{{ items.weight }}千克</span>-->
           </div>
 
           <div class="right">

@@ -14,39 +14,39 @@
     </div>
 
     <div class="bottom2">
-        <span class="s6" @click="$router.push('/index')">前往首页</span>
-        <span class="expand"></span>
+      <span class="s6" @click="$router.push('/index')">前往首页</span>
+      <span class="expand"></span>
     </div>
   </div>
 </template>
 
 <script>
-import ajax from '@utils/config';
+import ajax from "@utils/config";
 import { Toast } from "mint-ui";
 import top from "@/components/header2.vue";
 import blank from "@/components/blank.vue";
 export default {
-  components:{
+  components: {
     top,
     blank
   },
   data() {
     return {
-      barType:'0',  
-      barText:{
-        leftData:{type:1,name:require("@/assets/imagea/blackup.svg")},
-        centerData:{type:0,name:'卡券相关'},
-        rightData:{type:1,name:''},
+      barType: "0",
+      barText: {
+        leftData: { type: 1, name: require("@/assets/imagea/blackup.svg") },
+        centerData: { type: 0, name: "卡券相关" },
+        rightData: { type: 1, name: "" }
       },
       blackup: require("@/assets/imagea/blackup.svg"),
       head: require("@/assets/imagea/head.svg"),
       leftarrow: require("@/assets/imagea/leftarrow.svg"),
-      dataList:{},
+      dataList: {}
     };
   },
-  created () {
-    let id=this.$route.query.id;
-    if(!id){
+  created() {
+    let id = this.$route.query.id;
+    if (!id) {
       Toast("未获取到帮助id");
       return;
     }
@@ -55,20 +55,21 @@ export default {
   methods: {
     getpagelist(id) {
       ajax({
-        url: 'member-api-impl/helpservice/getHelpServiceById',
-        optionParams: {id:id}
-      }).post()
+        url: "member-api-impl/helpservice/getHelpServiceById",
+        optionParams: { id: id }
+      })
+        .post()
         .then(response => {
           if (response.code === 200) {
-            this.dataList= response.data?response.data:{};
+            this.dataList = response.data ? response.data : {};
           } else {
-            console.log(response)
+            console.log(response);
           }
         })
         .catch(error => {
-          console.log(error)
-        })
-    },
+          console.log(error);
+        });
+    }
   }
 };
 </script>

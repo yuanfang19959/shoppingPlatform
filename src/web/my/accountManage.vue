@@ -8,8 +8,7 @@
     <div class="content">
       <div class="c1" @click='sheetVisible=!sheetVisible;actions=actions1'>
         <span class="s1">我的头像</span>
-        <img :src="infoData.userImage" alt="" style="height: 95px;width: 95px;"/>
-        <!--<img :src="head" alt="" />-->
+        <img :src="infoData.userImage" alt="" style="height: 95px;width: 95px;" />
       </div>
       <div class="flexbox c1 " @click="$router.push({path:'/my/account/modify',query:{nickname:infoData.nickname}})">
         <span class="width140">我的昵称</span>
@@ -55,140 +54,134 @@
           <img :src="leftarrow" alt="" />
         </div>
       </div>
-      <!--<div class="c1">
-        <span>注销账号</span>
-      </div>-->
     </div>
     <mt-actionsheet :actions="actions" v-model="sheetVisible">
     </mt-actionsheet>
     <input v-show='false' ref="filElem" accept="image/*" type="file" capture="camera" @change='getFile(1)'>
-    <input v-show='false' ref="filElem2" type="file" accept="image/png,image/gif,image/jpeg" class="upload-file" @change="getFile(2)">
+    <input v-show='false' ref="filElem2" type="file" accept="image/png,image/gif,image/jpeg" class="upload-file"
+      @change="getFile(2)">
   </div>
 </template>
 
 <script>
-  import ajax from "@utils/config";
-  import { Toast, Actionsheet } from "mint-ui";
-  export default {
-    data() {
-      return {
-        blackup: require("@/assets/imagea/blackup.svg"),
-        head: require("@/assets/imagea/head.svg"),
-        leftarrow: require("@/assets/imagea/leftarrow.svg"),
-        sheetVisible: false,
-        actions: [],
-        actions1: [
-          { name: '拍照', method: this.getCamera },
-          { name: '从相册中选择', method: this.getLibrary }
-        ],
-        actions2: [
-          { name: '男', method: this.checkSex, value: 0 },
-          { name: '女', method: this.checkSex1, value: 1 }
-        ],
-        sexData: '保密',
-        imgSrc: require("@/assets/imagea/head.svg"),
-        infoData: {},
-      };
+import ajax from "@utils/config";
+import { Toast, Actionsheet } from "mint-ui";
+export default {
+  data() {
+    return {
+      blackup: require("@/assets/imagea/blackup.svg"),
+      head: require("@/assets/imagea/head.svg"),
+      leftarrow: require("@/assets/imagea/leftarrow.svg"),
+      sheetVisible: false,
+      actions: [],
+      actions1: [
+        { name: "拍照", method: this.getCamera },
+        { name: "从相册中选择", method: this.getLibrary }
+      ],
+      actions2: [
+        { name: "男", method: this.checkSex, value: 0 },
+        { name: "女", method: this.checkSex1, value: 1 }
+      ],
+      sexData: "保密",
+      imgSrc: require("@/assets/imagea/head.svg"),
+      infoData: {}
+    };
+  },
+  created() {
+    this.getInfoData();
+  },
+  methods: {
+    getCamera() {
+      console.log("getCamera");
+      this.$refs.filElem.dispatchEvent(new MouseEvent("click"));
     },
-    created() {
-      this.getInfoData()
+    getLibrary() {
+      console.log("getLibrary");
+      this.$refs.filElem2.dispatchEvent(new MouseEvent("click"));
     },
-    watch: {
-      imgSrc(newName, oldName){
-        if(newName!=this.newName){
-          // this.
-        }
+    getFile(type) {
+      let that = this,
+        inputFile;
+      if (type == 1) {
+        inputFile = this.$refs.filElem.files[0];
+      } else {
+        inputFile = this.$refs.filElem2.files[0];
       }
+      if (
+        inputFile.type !== "image/jpeg" &&
+        inputFile.type !== "image/png" &&
+        inputFile.type !== "image/gif"
+      ) {
+        Toast("不是有效的图片文件！");
+        return;
+      }
+
+      let reader = new FileReader();
+      reader.readAsDataURL(inputFile);
+      reader.onload = function(e) {
+        that.infoData.userImage = this.result;
+      };
+      this.updateInfo(2, inputFile);
     },
-    methods: {
-      getCamera() {
-        console.log("getCamera");
-        this.$refs.filElem.dispatchEvent(new MouseEvent('click'))
-      },
-      getLibrary() {
-        console.log("getLibrary");
-        this.$refs.filElem2.dispatchEvent(new MouseEvent('click'))
-      },
-      getFile(type) {
-        let that = this,inputFile;
-        if(type==1){
-          inputFile = this.$refs.filElem.files[0];
-        }else{
-          inputFile = this.$refs.filElem2.files[0];
-        }
-        if (inputFile.type !== 'image/jpeg' && inputFile.type !== 'image/png' && inputFile.type !== 'image/gif') {
-          Toast('不是有效的图片文件！');
-          return;
-        }
 
-        let reader = new FileReader();
-        reader.readAsDataURL(inputFile);
-        reader.onload = function (e) {
-          // alert('a')
-          // console.log("this.result==",this.result);
-          that.infoData.userImage = this.result;
-        }
-        this.updateInfo(2, inputFile);
-      },
-
-      checkSex() {
-        this.updateInfo(1, 0);
-      },
-      checkSex1() {
-        this.updateInfo(1, 1);
-      },
-      getInfoData() {
-        this.infoData.userImage='';
-
-        ajax({
-          url: 'member-api-impl/user/accountDetail',
-          optionParams: {}
+    checkSex() {
+      this.updateInfo(1, 0);
+    },
+    checkSex1() {
+      this.updateInfo(1, 1);
+    },
+    getInfoData() {
+      this.infoData.userImage = "";
+      ajax({
+        url: "member-api-impl/user/accountDetail",
+        optionParams: {}
+      })
+        .post()
+        .then(res => {
+          if (res.code === 200) {
+            this.infoData = res.data ? res.data : {};
+          } else {
+            console.log(response);
+          }
         })
-          .post()
-          .then(res => {
-            if (res.code === 200) {
-              this.infoData = res.data ? res.data : {};
-            } else {
-              console.log(response)
-            }
-          })
-          .catch(error => {
-            console.log(error)
-          })
-      },
-      // 数据更新  0 nickname 1 sex  2 userImage
-      updateInfo(type, data) {
-        let dataobj = {}, updateData = data, contentType = '';
-        if (type == 0) {
-          dataobj = { nickname: updateData };
-        } else if (type == 1) {
-          if (this.infoData.sex == data) return;
-          dataobj = { sex: updateData };
-        } else {
-          contentType = 'multipart/form-data';
-          dataobj = { userImage: updateData };
-        }
-        ajax({
-          url: 'member-api-impl/user/updAccountDetail',
-          optionParams: dataobj,
-          contentType: 'multipart/form-data',
-        }).post()
-          .then(res => {
-            if (res.code === 200) {
-              // this.infoData = res.data ? res.data : {};
-              Toast("修改成功");
-              this.getInfoData();
-            } else {
-              console.log(res)
-            }
-          })
-          .catch(error => {
-            console.log(error)
-          })
-      },
-
+        .catch(error => {
+          console.log(error);
+        });
+    },
+    // 数据更新  0 nickname 1 sex  2 userImage
+    updateInfo(type, data) {
+      let dataobj = {},
+        updateData = data,
+        contentType = "";
+      if (type == 0) {
+        dataobj = { nickname: updateData };
+      } else if (type == 1) {
+        if (this.infoData.sex == data) return;
+        dataobj = { sex: updateData };
+      } else {
+        contentType = "multipart/form-data";
+        dataobj = { userImage: updateData };
+      }
+      ajax({
+        url: "member-api-impl/user/updAccountDetail",
+        optionParams: dataobj,
+        contentType: "multipart/form-data"
+      })
+        .post()
+        .then(res => {
+          if (res.code === 200) {
+            Toast("修改成功");
+            this.getInfoData();
+          } else {
+            console.log(res);
+          }
+        })
+        .catch(error => {
+          console.log(error);
+        });
     }
-  };
+  }
+};
 </script>
 
 <style lang="scss" scoped>

@@ -34,7 +34,6 @@
           <span class="left">
             <img src="@/assets/imagea/position.png" alt />
             <span class="supplierName">{{ item.supplierName }}</span>
-            <!--<img src="@/assets/imagea/arrowRight.svg" alt />-->
           </span>
         </div>
         <div v-for="i in item.shipWayList">
@@ -47,7 +46,6 @@
             <div class="padd0_10 rightInfo flex1">
               <p>{{ ii.name }}</p>
               <span class="kg">净含量{{ ii.weight }}</span>
-              <!--<span class="kg">净含量{{ ii.weight }}千克</span>-->
             </div>
 
             <div class="right">
@@ -77,12 +75,7 @@
 
             <div class="song_bottom">
               <span class="p1">订单备注</span>
-              <input
-                v-model="params.remark"
-                ref="remark"
-                type="text"
-                placeholder="请先与乡村负责人或供应商家沟通"
-              />
+              <input v-model="params.remark" ref="remark" type="text" placeholder="请先与乡村负责人或供应商家沟通" />
             </div>
           </div>
         </div>
@@ -183,12 +176,11 @@ export default {
     return {
       barType: "0",
       barText: {
-        // leftData: {
-        //   type: 2,
-        //   name: require("@/assets/imagea/blackup.svg"),
-        //   path: "/my/index"
-        // },
-         leftData:{type:2,name:require("@/assets/imagea/blackup.svg"),path:'/my/cart'},
+        leftData: {
+          type: 2,
+          name: require("@/assets/imagea/blackup.svg"),
+          path: "/my/cart"
+        },
         centerData: { type: 0, name: "确认订单" },
         rightData: { type: 0, name: "" }
       },
@@ -206,10 +198,6 @@ export default {
       goodList: [],
       list: [1],
       params: {
-        // deliveryAddressId :null,
-        // consigneeName :null,//收货人名称
-        // consigneePhone  :null,//收货人名称
-
         addressId: null,
         listGoodsOrders: [],
         villageId: null,
@@ -229,29 +217,17 @@ export default {
   mounted() {
     this.getAllprice();
     this.getaddressList();
-
-    // console.log("addressId==",addressId);
-    // this.params.addressId=this.addressId;
     let goodArr = JSON.parse(localStorage.getItem("goodArr"));
     let goodArr2 = JSON.parse(localStorage.getItem("goodArr2"));
     goodArr = goodArr ? goodArr : [];
     goodArr2 = goodArr2 ? goodArr2 : [];
-
-    // goodArr[0].goodsId=1,
-
-    // console.log("goodArr==",goodArr);
     console.log("goodArr==", goodArr2);
     this.params.list = goodArr;
     goodArr.map(item => {
       this.list.push(item.goodsId);
     });
-
     this.goodList = goodArr2;
-
-    // console.log("goodArr22==",goodArr2);
-
     // 获取回传的帮扶村信息
-
     console.log("searchRes===", this.$route.query.searchRes);
     if (this.$route.query.searchRes) {
       let searchRes = JSON.parse(this.$route.query.searchRes);
@@ -270,30 +246,17 @@ export default {
       this.allPrice = temp_sum;
       this.allCount = temp_count;
     },
-    // useCard() {
-    //   // 使用优惠券的时候
-    //   // 这边后面需要根据优惠券的使用条件来使用优惠
-    //   if (!this.flag) {
-    //     this.allPrice = this.allPrice - 100;
-    //   } else {
-    //     this.allPrice = this.allPrice + 100;
-    //   }
-    //   this.flag = !this.flag;
-    // },
     getGoodsMes() {
       let temp = JSON.parse(localStorage.getItem("list"));
       this.params.list = temp;
       ajax({
         url: "product-api-impl/app/confirmGoodsList",
-        // url: 'product-api-impl/app/getGoodsByIds',
         optionParams: this.params
       })
         .post()
         .then(res => {
           if (res.code === 200) {
             this.goodList = res.data ? res.data : [];
-            // console.log("supplierList==",this.goodList.supplierList[0].shipWayList[0].fee);
-            // console.log("supplierList==",this.goodList.supplierList[0].shipWayList[0].goodsList);
           } else {
             console.log(res);
           }
@@ -326,9 +289,6 @@ export default {
               obj2 = {};
             maps[id] = String(iii.num);
             mapGoodsMoney[id] = String(iii.price);
-
-            // maps[id]=iii.num;
-            // mapGoodsMoney[id]=iii.price;
           });
         });
       });
@@ -336,7 +296,6 @@ export default {
       this.params.map = maps;
       this.params.mapGoodsMoney = mapGoodsMoney;
       this.params.listGoodsOrders = listGoodsOrders;
-      // console.log("this.params==",this.params);
       ajax({
         url: "order-api-impl/order/addOrderinfo",
         optionParams: this.params
@@ -347,7 +306,6 @@ export default {
           if (res.code === 200) {
             console.log(res);
             Toast("订单提交成功~");
-            // this.$router.push({path:'/pay',query:{goodsData:}})
           } else {
             console.log(res);
           }
@@ -368,16 +326,6 @@ export default {
           if (response.code === 200) {
             let tmp = response.data ? response.data : [],
               isback = 0;
-            // tmp.map(item=>{
-            //   if(item.isDefault==1){
-            //     this.defData=item;
-            //   }
-            // })
-            // tmp.map(item=>{
-            //   if(this.addressId && item.id==this.addressId){
-            //     this.defData=item;
-            //   }
-            // })
             tmp.map(item => {
               if (this.addressId && item.id == this.addressId) {
                 this.defData = item;

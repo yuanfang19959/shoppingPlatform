@@ -1,6 +1,6 @@
 <template>
   <div class="mainCon">
-    <img :src="bg" alt="" class="logo_img"/>
+    <img :src="bg" alt="" class="logo_img" />
     <p class="p1">爱心购公益商城</p>
     <p class="p2" v-show="!flag">绑定手机号开始选购</p>
     <div class="btn" v-show="!flag">
@@ -13,7 +13,7 @@
       <div>
         <input type="tel" v-model='params.phone' placeholder="请输入手机号" maxlength="11" />
       </div>
-      <div class="imgCode_box"> 
+      <div class="imgCode_box">
         <input type="text" v-model='params.imageCode' placeholder="请输入图形验证码" maxlength="4" />
         <img class="imgCode" :src="yzm1" alt="" @click="getcode" />
       </div>
@@ -70,7 +70,6 @@ export default {
         .post()
         .then(response => {
           if (response.code === 200) {
-            // this.params.imagecCode=response.data[0];
             this.params.margCode = response.data[0];
             this.yzm1 = "data:image/png;base64," + response.data[1];
           } else {
@@ -166,7 +165,6 @@ export default {
             localStorage.setItem("phone", response.data.phone);
             Cookies.set("token", response.data.token);
             Cookies.set("phone", response.data.phone);
-            // Toast(response.msg);
             Toast("登录成功");
             this.$router.push("/index");
           } else {
