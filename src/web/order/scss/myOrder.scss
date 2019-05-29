@@ -1,0 +1,247 @@
+.wrap {
+  background-color: rgb(244, 246, 249);
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
+  //解决移动端点击按钮时出现阴影问题
+  .topNav {
+    background-color: #E1212D;
+    height: 92px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 100;
+    .mydd {
+      display: block;
+      padding: 21px 0 35px 21px;
+      font-size: 35px;
+      font-family: "HYQiHeiX1-FEW";
+      color: #fff;
+      font-weight: normal;
+      margin: 0 auto;
+      width: 300px;
+      text-align: center;
+    }
+  }
+
+  .nav {
+    position: fixed;
+    padding: 0 17px;
+    width: 100%;
+    top: 83px;
+    background: #f4f6f9;
+    z-index: 100;
+    ul {
+      overflow: hidden;
+
+      li {
+        float: left;
+        margin-left: 10px;
+        padding: 22px 12px;
+        font: 400 27px PingFangSC-Regular;
+      }
+    }
+  }
+
+  .content {
+    // margin-top: 90px;
+    padding: 0px 17px;
+    
+    .box {
+      margin-top: 20px;
+      padding: 20px 17px;
+      background-color: #fff;
+      border-radius: 15px;
+      overflow: hidden;
+
+      .top {
+        display: flex;
+        justify-content: space-between;
+        font-size: 23px;
+        font-family: "SourceHanSansCN-Regular";
+        font-weight: 400;
+
+        .left {
+          width: 146px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+
+        }
+
+        .r1 {
+          color: #E1212D;
+        }
+      }
+
+      .goods {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+
+        .imgContainer {
+          height: 155px;
+          width: 155px;
+          padding-top: 10px;
+
+          img {
+            width: 155px;
+            border-radius: 15px;
+            height:100%;
+          }
+        }
+
+        .rightInfo {
+          padding: 9px 18px;
+
+          p {
+            font-size: 27px;
+            font-family: "SourceHanSansCN-Regular";
+            font-weight: 400;
+            color: #262626;
+          }
+
+          .kg {
+            display: block;
+            margin: 15px 0px;
+            font-size: 20px;
+            font-family: "HYQiHeiX1-DEW";
+            font-weight: normal;
+            color: #808080;
+          }
+        }
+
+        .right {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          align-items: flex-end;
+          padding-top: 10px;
+          width: 108px;
+          padding-bottom: 17px;
+
+          .s3 {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            overflow: hidden;
+
+            .t1 {
+              font-size: 23px;
+              font-family: "PingFangSC-Regular";
+              font-weight: 400;
+              color: #333333;
+            }
+
+            .t2 {
+              font-size: 17px;
+              color: #808080;
+              font-family: "HYQiHeiX1-DEW";
+              font-weight: normal;
+              display: block;
+            }
+          }
+
+          .s4 {
+            font-size: 27px;
+            font-family: "PingFangSC-Regular";
+            font-weight: 400;
+          }
+        }
+      }
+
+      .bt {
+
+        //底部按钮部分
+        li {
+          float: right;
+          padding-left: 35px;
+
+          button {
+            font-size: 27px;
+            font-family: "SourceHanSansCN-Regular";
+            font-weight: 400;
+            padding: 9px 0;
+            width: 140px;
+            border: 1px solid #E1212D;
+            border-radius: 15px;
+            color: #fff;
+
+
+          }
+
+          .payRightnow {
+            background-color: red;
+          }
+
+          .cancel,
+          .extend,
+          .view,
+          .buyAgain {
+            background-color: #fff;
+            color: #808080;
+            border: 1px solid #B3B3B3;
+          }
+          .buyAgain:focus{
+            outline: 0;
+          }
+          .writeEva{
+              border: 1px solid #E1212D;
+              background-color: #fff;
+              color: #E1212D;
+
+          }
+          button{
+            &:focus{
+              outline:0px;
+            }
+          }
+          .confirm {
+            border: 1px solid #E1212D;
+            background-color: #fff;
+            color: #E1212D;
+          }
+
+        }
+
+        li:last-child {
+          padding-left: 0px;
+        }
+      }
+
+      .all {
+        overflow: hidden;
+        display: flex;
+        position: relative;
+        justify-content: space-between;
+       margin: 20px 0px;
+
+        .jf {
+          line-height: 38px;
+          font-size: 20px;
+          color: #E1212D;
+        }
+
+        .cnt {
+          font-size: 20px;
+          margin-left: 14px;
+          color: #808080;
+          line-height: 33px;
+        }
+
+        .s4 {
+          font-size: 27px;
+          font-family: "PingFangSC-Regular";
+          font-weight: 400;
+        }
+
+
+
+      }
+    }
+  }
+}
+// 底部撑高
+.footpad{
+    height: 19px;
+}
+

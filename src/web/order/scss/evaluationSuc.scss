@@ -1,0 +1,152 @@
+.main {
+  //   background-color: #fff;
+  position: relative;
+
+  .bannerShow {
+    .blackup {
+      position: absolute;
+      top: 35px;
+      left: 33px;
+      z-index: 999;
+    }
+
+    span {
+      position: absolute;
+      top: 32px;
+      left: 50%;
+      transform: translate(-50%);
+      display: inline-block;
+      font-size: 35px;
+      font-family: "PingFangSC-Regular";
+      font-weight: 400;
+      color: #fff;
+    }
+  }
+
+  .top {
+
+    background-color: red;
+    height: 405px;
+    background: -webkit-linear-gradient(#E1212D, #E8893D);
+    /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(#E1212D, #E8893D);
+    /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(#E1212D, #E8893D);
+    /* Firefox 3.6 - 15 */
+    background: linear-gradient(#E1212D, #E8893D);
+
+    /* 标准的语法 */
+
+
+    .centerBox {
+      width: 461px;
+      margin: 0 auto;
+      text-align: center;
+
+      .gy {
+        position: relative;
+        margin-bottom: 35px;
+        top: 130px;
+
+        .s2 {
+          font-size: 28px;
+          font-family: SourceHanSansCN-Normal;
+          font-weight: 400;
+          color: #fff;
+        }
+      }
+
+      .gy_bottom {
+        position: relative;
+        top: 190px;
+
+        span {
+          display: inline-block;
+          margin: 0 25px;
+          padding: 18px 36px;
+          border-radius: 31px;
+          border: 1px solid #fff;
+          font-size: 25px;
+          font-family: SourceHanSansCN-Normal;
+          font-weight: 400;
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  .middle {
+    position: relative;
+    margin: 0 224px;
+    padding: 50px 0;
+    text-align: center;
+
+    span {
+      position: absolute;
+      top: 29px;
+      left: 74px;
+      padding: 0 20px;
+      background-color: #f4f6f9;
+      font-size: 28px;
+      font-family: SourceHanSansCN-Normal;
+      font-weight: 400;
+      color: #808080;
+      width: 39%;
+    }
+  }
+
+  .content {
+    margin: 17px;
+    padding: 16px;
+    border-radius: 15px;
+    background-color: #fff;
+
+    .mini {
+      display: flex;
+      justify-content: space-between;
+      padding: 17px 0;
+      border-bottom: 1px solid #EDEFF2;
+      p {
+        width: 374px;
+      }
+
+      img {
+        width: 120px;
+        height: 120px;
+      }
+
+      button {
+        padding: 12px 36px;
+        height: 57px;
+        border: 1px solid #E8893D;
+        border-radius: 27px;
+        background-color: #fff;
+        font-size: 23px;
+        font-family: SourceHanSansCN-Normal;
+        font-weight: 400;
+        color: #E8893D;
+        outline: none;
+      }
+      .flexbox.goodsList{
+        justify-content: center;
+        // align-content: center;
+        align-items:center;
+        .flex1{
+          padding: 0 20px;
+          color: #262626;
+          word-wrap:break-word; 
+          
+        }
+      }
+      
+    }
+    .textC{
+      text-align: center;
+      color: #262626;
+    }
+    .mini:last-child{
+        border-bottom: none;
+    }
+
+  }
+}

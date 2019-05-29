@@ -1,0 +1,81 @@
+.main {
+  position: relative;
+
+  .bannerShow {
+    background-color: #E1212D;
+    height: 92px;
+    font-size: 35px;
+    font-family: "PingFangSC-Regular";
+    font-weight: 400;
+    color: #fff;
+
+    .blackup {
+      position: absolute;
+      top: 35px;
+      left: 33px;
+      z-index: 999;
+    }
+
+    .center_1 {
+      position: absolute;
+      top: 32px;
+      left: 50%;
+      transform: translate(-50%);
+      display: inline-block;
+    }
+
+    .leftS {
+      position: absolute;
+      top: 32px;
+      right: 28px;
+      ;
+      display: inline-block;
+    }
+  }
+
+  .content {
+    padding: 16px;
+
+    .inputBox {
+      background-color: #fff;
+      border-radius: 15px;
+      padding: 0 19px 0 25px;
+      display: flex;
+      justify-content: space-between;
+
+      input {
+        height: 82px;
+        background-color: #fff;
+        border: none;
+        font-size: 35px;
+        font-family: SourceHanSansCN-Normal;
+        font-weight: 400;
+        outline: none;
+      }
+
+      img {
+        padding-top: 23px;
+        width: 40px;
+        height: 40px;
+        line-height: 82px;
+      }
+    }
+
+    p {
+      padding: 50px 0 36px 14px;
+      font-size: 32px;
+      font-family: "SourceHanSansCN-Normal";
+      font-weight: 400;
+    }
+
+    span {
+      display: block;
+      margin-top: 34px;
+      padding-left: 14px;
+      font-size: 25px;
+      font-family: "SourceHanSansCN-Normal";
+      font-weight: 400;
+      color: #666666;
+    }
+  }
+}

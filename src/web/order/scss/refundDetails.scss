@@ -1,0 +1,233 @@
+.main {
+  position: relative;
+
+  .bannerShow {
+    overflow: hidden;
+    background-color: #E1212D;
+    height: 182px;
+    font-size: 35px;
+    font-family: "PingFangSC-Regular";
+    font-weight: 400;
+    color: #fff;
+
+    .blackup {
+      position: absolute;
+      top: 35px;
+      left: 33px;
+      z-index: 999;
+    }
+
+    .center_1 {
+      position: absolute;
+      top: 32px;
+      left: 50%;
+      transform: translate(-50%);
+      display: inline-block;
+    }
+
+    img {
+      position: absolute;
+      top: 42px;
+      right: 127px;
+    }
+
+    .leftS {
+      position: absolute;
+      top: 38px;
+      right: 28px;
+      font-size: 27px;
+      display: inline-block;
+    }
+
+    .receive {
+      font-size: 30px;
+      font-family: PingFangSC-Regular;
+      font-weight: 400;
+      color: #fff;
+      text-align: center;
+      position: relative;
+      bottom: -108px;
+
+      .s2 {
+        font-size: 25px;
+        font-family: PingFangSC-Thin;
+        font-weight: 100;
+        display: inline-block;
+        padding-left: 26px;
+        vertical-align: top;
+        padding-top: 5px;
+      }
+    }
+  }
+
+  //物流部分
+  .wl {
+    display: flex;
+    justify-content: space-between;
+    margin: 17px;
+    padding: 19px;
+    border-radius: 15px;
+    background-color: #fff;
+
+    .wl_left {
+      color: #262626;
+      font-size: 25px;
+      font-family: SourceHanSansCN-Light;
+      font-weight: 300;
+    }
+
+    .wl_right {
+      span {
+        font-size: 28px;
+        font-family: PingFangSC-Regular;
+        font-weight: 400;
+        color: #E1212D;
+      }
+    }
+  }
+}
+
+//订单商品部分
+.block {
+  margin-top: 20px;
+  padding: 0px 17px;
+
+  .box {
+    margin-top: 20px;
+    padding: 20px 17px;
+    background-color: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+
+    .refundtime {
+      font-size: 20px;
+      font-family: SourceHanSansCN-Light;
+      font-weight: 300;
+      color: #666666;
+      span {
+        display: block;
+        margin: 14px 0;
+      }
+    }
+
+    .top {
+      display: flex;
+      justify-content: flex-start;
+      font-size: 23px;
+      font-family: "SourceHanSansCN-Regular";
+      font-weight: 400;
+
+      .left {
+        width: 108px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+      }
+    }
+
+    .goods {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+
+      .imgContainer {
+        height: 155px;
+        width: 155px;
+        padding-top: 10px;
+
+        img {
+          width: 155px;
+          height: 155px;
+          border-radius: 15px;
+        }
+      }
+
+      .rightInfo {
+        padding: 9px 18px;
+        width: 370px;
+        p {
+          font-size: 27px;
+          font-family: "SourceHanSansCN-Regular";
+          font-weight: 400;
+          color: #262626;
+        }
+
+        .kg {
+          display: block;
+          margin: 15px 0px;
+          font-size: 20px;
+          font-family: "HYQiHeiX1-DEW";
+          font-weight: normal;
+          color: #808080;
+        }
+      }
+
+      .right {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-end;
+        padding-top: 10px;
+        width: 108px;
+        padding-bottom: 17px;
+
+        .s3 {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+          overflow: hidden;
+
+          .t1 {
+            font-size: 23px;
+            font-family: "PingFangSC-Regular";
+            font-weight: 400;
+            color: #333333;
+          }
+
+          .t2 {
+            font-size: 17px;
+            color: #808080;
+            font-family: "HYQiHeiX1-DEW";
+            font-weight: normal;
+            display: block;
+          }
+        }
+
+        .s4 {
+          font-size: 27px;
+          font-family: "PingFangSC-Regular";
+          font-weight: 400;
+        }
+      }
+    }
+
+
+    .all {
+      overflow: hidden;
+      display: flex;
+      position: relative;
+      justify-content: flex-end;
+
+      right: -272px;
+      width: 400px;
+
+      .cnt {
+        font-size: 20px;
+        margin-left: 14px;
+        color: #808080;
+        line-height: 33px;
+      }
+
+      .s4 {
+        font-size: 27px;
+        font-family: "PingFangSC-Regular";
+        font-weight: 400;
+      }
+    }
+  }
+}
+
+.wl_center {
+  margin: 0 auto;
+}

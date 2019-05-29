@@ -1,0 +1,256 @@
+@import '@/assets/scss/commin.scss';
+
+.cart_page {
+  .cart_page_top {
+
+    position: fixed;
+    width: 100%;
+    background: #E1212D;
+    color: #fff;
+    height: 92px;
+    line-height: 92px;
+    font-size: 40px;
+    font-family: HYQiHeiX1-FEW;
+    font-weight: normal;
+    color: rgba(255, 255, 255, 1);
+    padding: 0 32px;
+
+    .flexbox {
+      width: 100%;
+
+      .flex1 {
+        // text-align: right;
+        padding-left: 82px;
+      }
+
+      .flex2 {
+        text-align: center;
+        padding-right: 60px;
+      }
+    }
+  }
+
+  .clear {
+    width: 100%;
+    height: 80px;
+  }
+
+  .totalNum {
+    font-size: 27px;
+    font-family: SourceHanSansCN-Regular;
+    font-weight: 400;
+    color: rgba(38, 38, 38, 1);
+    padding: 28px 33px 22px;
+
+    i {
+      font-style: normal;
+      padding: 0 10px;
+    }
+  }
+
+  .cart_list {
+    ul {
+        background-color: white;
+        border-radius: 25px;
+        margin: 20px;
+      li {
+        background: #fff;
+        margin: 0px 17px;
+        padding: 29px 0;
+        border-radius: 20px;
+        padding: 29px 17px;
+        margin-bottom: 20px;
+
+        .itemFirst {
+          .checkedimg {
+            //    flex: 1
+            vertical-align: middle;
+            margin: auto;
+            margin-right: 16px;
+
+            img {
+              vertical-align: middle;
+              width: 32px;
+            }
+          }
+
+          .goodsImg {
+            //    flex: 1;
+            width: 155px;
+            
+
+            img {
+                width: 155px;
+                height: 155px;
+                border-radius: 15px;
+            }
+          }
+
+          .goodsText {
+            flex: 3;
+            padding: 0px 0px 10px 20px;
+
+            .goodsTextDis {
+              font-size: 27px;
+              font-family: SourceHanSansCN-Regular;
+              font-weight: 400;
+              color: rgba(38, 38, 38, 1);
+            }
+
+            .netContent {
+              margin-top: 8px;
+              margin-bottom: 8px;
+              font-size: 20px;
+              font-family: HYQiHeiX1-DEW;
+              font-weight: normal;
+              color: rgba(128, 128, 128, 1);
+            }
+
+            .goodsTextR {
+              .priceNum {
+                margin-top: 6px;
+                font-size: 30px;
+                font-family: PingFangSC-Regular;
+                font-weight: 400;
+                color: #E1212D;
+                // color:rgba(234,171,62,1);
+              }
+
+              .addORsub {
+                vertical-align: middle;
+
+                img {
+                  vertical-align: middle;
+
+                }
+
+                span {
+                  vertical-align: middle;
+
+                  &.span_input {
+                    input {
+                      border: 0px;
+                      width: 50px;
+                      font-size: 32px;
+                      text-align: center;
+                      vertical-align: middle;
+
+                      &:focus {
+                        border: 0px;
+                        outline: 0px;
+                        height: 45px;
+
+
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        .itemsecond {
+          .navImg {
+            vertical-align: middle;
+            margin-right: 16px;
+
+            img {
+              vertical-align: middle;
+            }
+          }
+
+          .selectVillage {
+            flex: 3;
+            vertical-align: middle;
+
+            div {
+              vertical-align: middle;
+              // line-height: 36px;
+              // height: 36px;
+              padding-top: 4px;
+            }
+          }
+
+          i {
+            font-style: normal;
+          }
+
+          .rateNum {
+            font-size: 23px;
+            font-family: SourceHanSansCN-Normal;
+            font-weight: 400;
+            color: #E1212D;
+            // color:rgba(234,171,62,1);
+            text-align: right;
+            padding-top: 4px;
+          }
+        }
+      }
+    }
+  }
+
+  .bottom_pay {
+    position: fixed;
+    bottom: 100px;
+    background-color: #fff;
+    width: 100%;
+    display: inline-flex;
+    height: 97px;
+    line-height: 97px;
+    font-size: 30px;
+
+    .sub_btn {
+      display: inline-block;
+      width: 200px;
+      background: #E1212D;
+      //    background:rgba(255,182,82,1);
+      text-align: center;
+      vertical-align: middle;
+      color: #fff;
+    }
+
+    .checked_btn {
+      margin-left: 32px;
+      margin-right: 17px;
+
+      .checked_btn_text {
+        display: inline-block;
+        line-height: 93px;
+      }
+
+      .img_layer {
+        display: inline-block;
+        // padding: 2px;
+        height: 92px;
+        width: 33px;
+        line-height: 97px;
+        vertical-align: middle;
+
+        img {
+          width: 100%;
+        }
+      }
+    }
+
+    .total_num {
+      flex: 1;
+      text-align: right;
+      margin-right: 40px;
+
+      .total_num_price {
+        font-size: 30px;
+        font-family: PingFangSC-Regular;
+        font-weight: 400;
+        color: #E1212D;
+        // color:rgba(234,171,62,1);
+      }
+    }
+
+  }
+}
+
+.blackspace {
+  height: 197px;
+
+}

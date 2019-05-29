@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="37" height="37" viewBox="0 0 37 37">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #f7f7f7;
+        stroke: #b3b3b3;
+        stroke-linejoin: round;
+        stroke-width: 2px;
+      }
+
+      .cls-2 {
+        fill: #e1212d;
+      }
+    </style>
+  </defs>
+  <circle id="椭圆_1_拷贝_3" data-name="椭圆 1 拷贝 3" class="cls-1" cx="18.5" cy="18.5" r="14.5"/>
+  <circle id="椭圆_1" data-name="椭圆 1" class="cls-2" cx="18.5" cy="18.5" r="9.5"/>
+</svg>

@@ -1,0 +1,118 @@
+ .main {
+     background: white;
+   .header {
+     height: 91px;
+   }
+
+   .nav {
+     overflow: hidden;
+     padding: 27px 17px;
+
+     ul {
+       list-style: none;
+       height: 60px;
+       border-bottom: 2px solid #DF0715;
+       padding-left: 17px;
+
+       li {
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0); //解决点击时出现黑色背景
+         float: left;
+         font-size: 27px;
+         font-family: "PingFangSC-Regular";
+         font-weight: 400;
+         padding-right: 110px;
+
+         img {
+           vertical-align: middle;
+         }
+       }
+
+       :last-child {
+         padding-right: 0px;
+       }
+     }
+   }
+
+   .content {
+     padding: 0px 17px;
+
+     .goods {
+       display: flex;
+      //  justify-content: flex-start;
+      justify-content: center;
+      align-items: center;
+       margin-bottom:10px;
+       .imgContainer{
+          // height: 214px;
+         width: 214px;
+         vertical-align: middle;  
+        //  margin: auto;
+        display: inline-block;
+         .goodsImg{
+            width: 100%;
+            vertical-align: middle;  
+            // margin: auto;
+            // height: 100%;
+            display: inline-block;
+         }
+       }
+       .rightInfo {
+         padding: 9px 18px;
+        width: 100%;
+         p {
+           font-size: 30px;
+           font-family: "SourceHanSansCN-Regular";
+           font-weight: 400;
+           color: #262626;
+         }
+
+         .kg {
+           display: block;
+           margin: 5px 0px;
+           font-size: 20px;
+           font-family: "HYQiHeiX1-DEW";
+           font-weight: normal;
+           color: #808080;
+         }
+
+         .tips {
+            margin-bottom: 10px;
+           span {
+             height: 24px;
+             border: 1px solid #E1212D;
+             font-size: 17px;
+             color: #E1212D;
+             padding: 0px 12px; 
+             border-radius: 15px;
+           }
+
+           :last-child {
+            //  margin-left: 14px;
+           }
+         }
+
+         .bottom {
+             
+           .s1 {
+             font-size: 30px;
+             font-family: "PingFangSC-Regular";
+             font-weight: 400;
+             color: #E1212D;
+
+             .s2 {
+               display: inline-block;
+               color: #B3B3B3;
+               font-size: 20px;
+               font-family: "PingFangSC-Regular";
+               font-weight: 400;
+               padding-left: 40px;
+             }
+           }
+
+           display: flex;
+           justify-content: space-between;
+         }
+       }
+     }
+   }
+ }

@@ -1,0 +1,92 @@
+@import '@/assets/scss/commin.scss';
+
+.bannerShow {
+  background-color: #E1212D;
+  font-size: 35px;
+  font-family: "PingFangSC-Regular";
+  font-weight: 400;
+  color: #fff;
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+  top: 0;
+
+  .blackup {
+    position: absolute;
+    top: 35px;
+    left: 33px;
+    z-index: 999;
+  }
+
+  .center_1 {
+    position: absolute;
+    top: 32px;
+    left: 50%;
+    transform: translate(-50%);
+    display: inline-block;
+  }
+
+  img {
+    position: absolute;
+    top: 42px;
+    right: 127px;
+  }
+
+  .leftS {
+    position: absolute;
+    top: 32px;
+    right: 28px;
+    font-size: 35px;
+    display: inline-block;
+  }
+}
+
+.clear {
+  height: 92px;
+}
+
+//内容区域
+.content {
+  margin: 17px 15px;
+  padding: 15px 25px;
+  border-radius: 15px;
+  background-color: #fff;
+
+  .contBox {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #d9d9d9;
+    margin-top: 10px;
+    .contLeft {
+      display: flex;
+      flex-direction: column;
+      font-size: 30px;
+      font-family: SourceHanSansCN-Regular;
+      font-weight: 400;
+      color: #262626;
+
+      .date {
+        display: block;
+        margin: 23px 0;
+        font-size: 25px;
+        font-family: SourceHanSansCN-Light;
+        font-weight: 300;
+        color: #808080;
+      }
+    }
+
+    .conRight {
+      font-size: 35px;
+      font-family: SourceHanSansCN-Regular;
+      font-weight: 400;
+      color: #E1212D;
+      span{
+          display: block;
+          margin-top: 15px;
+      }
+    }
+  }
+  .contBox:last-child{
+      border: none;
+  }
+}

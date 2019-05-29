@@ -1,0 +1,7 @@
+##ignore this file##
+/node_modules/ 
+/dist/
+*.git
+*.ide
+*.idea
+/config/

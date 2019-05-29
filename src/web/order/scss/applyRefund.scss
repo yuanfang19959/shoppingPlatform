@@ -1,0 +1,266 @@
+.main {
+  position: relative;
+
+  .bannerShow {
+    background-color: #E1212D;
+    // height: 108px;
+    font-size: 35px;
+    font-family: "PingFangSC-Regular";
+    font-weight: 400;
+    color: #fff;
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+    top: 0;
+
+    .blackup {
+      position: absolute;
+      top: 35px;
+      left: 33px;
+      z-index: 999;
+    }
+
+    .center_1 {
+      position: absolute;
+      top: 32px;
+      left: 50%;
+      transform: translate(-50%);
+      display: inline-block;
+    }
+
+    img {
+      position: absolute;
+      top: 42px;
+      right: 127px;
+    }
+
+    .leftS {
+      position: absolute;
+      top: 32px;
+      right: 28px;
+      font-size: 35px;
+      display: inline-block;
+    }
+  }
+
+  .clear {
+    height: 106px;
+  }
+
+  .topContent {
+    display: flex;
+    justify-content: flex-start;
+    margin: 17px;
+    padding: 19px;
+    border-radius: 15px;
+    color: #333333;
+    background-color: #fff;
+
+    img {
+      width: 75px;
+      height: 75px;
+    }
+
+    .topLeft {
+      padding-left: 10px;
+
+      p {
+        font-size: 25px;
+        font-family: SourceHanSansCN-Light;
+        font-weight: 300;
+        color: #262626;
+      }
+
+      span {
+        padding-top: 15px;
+        font-size: 20px;
+        font-family: HYQiHeiX1-DEW;
+        font-weight: normal;
+        color: #808080;
+      }
+    }
+  }
+
+  .box_content,
+  .box_content2 {
+    display: flex;
+    justify-content: space-between;
+    margin: 17px;
+    padding: 19px;
+    border-radius: 15px;
+    color: #333333;
+    background-color: #fff;
+
+    .wl_left {
+      color: #333333;
+      font-size: 25px;
+      font-family: SourceHanSansCN-Light;
+      font-weight: 300;
+    }
+
+    .wl_right {
+      span {
+        font-size: 25px;
+        font-family: PingFangSC-Regular;
+        font-weight: 400;
+        color: #E1212D;
+      }
+    }
+
+    input {
+      outline: none;
+      border: none;
+      font-size: 25px;
+      font-family: SourceHanSansCN-Regular;
+      font-weight: 400;
+      color: #808080;
+      width: 83%;
+    }
+  }
+
+  .box_content2 {
+    display: flex;
+    justify-content: flex-start;
+    justify-items: center;
+
+    .wl_right {
+      span {
+        padding-left: 15px;
+      }
+    }
+  }
+
+  .camera {
+    display: flex;
+    justify-content: flex-start;
+    flex-flow:row wrap;
+    margin: 17px;
+    padding: 19px;
+    border-radius: 15px;
+    color: #333333;
+    background-color: #fff;
+
+    .rightCame {
+      position: relative;
+      margin-left: 15px;
+      img {
+        border-radius: 5px;
+      }
+      .del {
+        position: absolute;
+        width: 100%;
+        top: 123px;
+        color: #fff;
+        font-size: 21px;
+        background-color: #8a8585;
+        text-align: center;
+      }
+    }
+
+    .leftCame {
+      .imgC {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+        padding: 30px 26px;
+        width: 68px;
+        height: 60px;
+        border: 1px dotted #CCCCCC;
+        border-radius: 10px;
+      }
+      .camera_text {
+        margin: 10px 0;
+        text-align: center;
+        font-size: 20px;
+        font-family: SourceHanSansCN-Light;
+        font-weight: 300;
+        color: #808080;
+        span{
+            display: block;
+            width: 85px;
+            margin: 0 auto;
+        }
+      }
+    }
+  }
+}
+
+//弹出层
+.mint-popup-bottom {
+  width: 100%;
+}
+
+.popContent {
+  width: 100%;
+  height: 555px;
+  background-color: #fff;
+
+  .popTop {
+    margin: 15px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 30px;
+    font-family: PingFangSC-Regular;
+    font-weight: 400;
+
+    .confirm {
+      color: #E1212D;
+    }
+  }
+
+  .popSelected {
+    display: flex;
+    justify-content: space-between;
+    margin: 27px 15px;
+    font-size: 30px;
+    font-family: SourceHanSansCN-Normal;
+    font-weight: 400;
+    color: #333333;
+    border-bottom: 1px solid #B3B3B3;
+
+    img {
+      width: 49px;
+      height: 49px;
+    }
+  }
+
+}
+
+.successContent {
+  text-align: center;
+
+  img {
+    margin: 55px 0;
+  }
+
+  .suc {
+    font-size: 30px;
+    font-family: SourceHanSansCN-Normal;
+    font-weight: 400;
+    color: #262626;
+  }
+
+  .btn {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 0 17px;
+
+    button {
+      display: block;
+      margin: 16px 0;
+      padding: 26px 299px;
+      text-align: center;
+      font-size: 30px;
+      font-family: SourceHanSansCN-Normal;
+      font-weight: 400;
+      background-color: #fff;
+      color: #262626;
+      border: none;
+      outline: none;
+      border-radius: 15px;
+    }
+  }
+}

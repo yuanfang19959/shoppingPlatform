@@ -1,0 +1,71 @@
+$font100: 100px;
+.ellip{
+     overflow: hidden;
+     display: -webkit-box;
+     -webkit-line-clamp: 1;
+     -webkit-box-orient: vertical;
+     text-overflow: ellipsis;
+}
+.fl {
+    float:left;
+}
+.fr{
+    float:right;
+}
+.center{
+    width:1200px;
+    height:100%;
+    margin:0 auto;
+}
+
+.flexbox {
+      display: flex;
+}
+.flex1 {
+    flex: 1;
+}
+.flex2 {
+    flex: 2;
+}
+.flex3 {
+    flex: 3;
+}
+.align-items {
+    align-items: center;
+}
+.justify-content {
+    justify-content: center;
+}
+.popupShow{
+    width: 100%;
+    background:rgba(247,247,247,1);
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    // border-bottom-left-radius: 0;
+    // border-bottom-right-radius: 0;
+    .popup_text_top{
+          height: 70px;
+          line-height: 70px;
+          padding: 0 31px;
+          .flex2{
+            text-align: center;
+          }
+          .popup_text_topR{
+            text-align: right;
+            vertical-align: middle;
+            height: 41px;
+            margin: auto;
+            img{
+              // height: 
+            }
+          }
+        }
+        .area_ctrl{
+            font-size: 20px!important;
+        }
+}
+ .mint-actionsheet-button{
+    height: 80px;
+    line-height: 80px;
+    font-size: 36px;
+}

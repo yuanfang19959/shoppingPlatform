@@ -1,0 +1,595 @@
+.main {
+  position: relative;
+  .clear{
+      height: 186px;
+  }
+  .bannerShow {
+    overflow: hidden;
+    background-color: #E1212D;
+    height: 182px;
+    font-size: 35px;
+    font-family: "PingFangSC-Regular";
+    font-weight: 400;
+    color: #fff;
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+    top: 0;
+   
+    .blackup {
+      position: absolute;
+      top: 35px;
+      left: 33px;
+      z-index: 999;
+    }
+
+    .center_1 {
+      position: absolute;
+      top: 32px;
+      left: 50%;
+      transform: translate(-50%);
+      display: inline-block;
+    }
+
+    img {
+      position: absolute;
+      top: 42px;
+      right: 127px;
+    }
+
+    .leftS {
+      position: absolute;
+      top: 38px;
+      right: 28px;
+      font-size: 27px;
+      display: inline-block;
+    }
+
+    .receive {
+      font-size: 30px;
+      font-family: PingFangSC-Regular;
+      font-weight: 400;
+      color: #fff;
+      text-align: center;
+      position: relative;
+      bottom: -108px;
+
+      .s2 {
+        font-size: 25px;
+        font-family: PingFangSC-Thin;
+        font-weight: 100;
+        display: inline-block;
+        padding-left: 26px;
+        vertical-align: top;
+        padding-top: 5px;
+      }
+    }
+  }
+
+  //物流部分
+  .wl {
+    display: flex;
+    justify-content: space-between;
+    margin: 17px;
+    padding: 19px;
+    border-radius: 15px;
+    background-color: #fff;
+   
+    .wl_left {
+      color: #262626;
+      font-size: 25px;
+      font-family: SourceHanSansCN-Light;
+      font-weight: 300;
+     
+      img{
+         vertical-align: middle;  
+      }
+      span {
+        padding-left: 11px;
+      }
+    }
+
+    .wl_right {
+      width: 13px;
+      height: 24px;
+
+    }
+  }
+
+  .content {
+    margin: 16px;
+    background: #fff;
+    border-radius: 15px;
+    padding: 5px 22px 0;
+
+    .c1 {
+      margin-top: 20px;
+      position: relative;
+      padding-bottom: 22px;
+      display: flex;
+      justify-content: flex-start;
+      border-bottom: 1px solid #D9D9D9;
+
+      .dw {
+        width: 35px;
+        height: 48px;
+        padding-top: 20px;
+      }
+
+      .left {
+        display: flex;
+        flex-direction: column;
+        width: 595px;
+        padding-left: 33px;
+
+        .top {
+          margin-bottom: 20px;
+        }
+
+        .s1 {
+          font-size: 32px;
+          font-family: "SourceHanSansCN-Medium";
+          font-weight: 500;
+          color: #262626;
+        }
+
+        .phone {
+          font-size: 30px;
+          font-family: "SourceHanSansCN-Normal";
+          font-weight: 400;
+          color: #808080;
+        }
+
+        .addressTest {
+          font-size: 25px;
+          font-family: "SourceHanSansCN-Normal";
+          font-weight: 400;
+          color: #262626;
+        }
+      }
+
+      .right {
+        padding-top: 25px;
+
+        img {
+          width: 13px;
+          height: 25px;
+
+        }
+      }
+
+
+    }
+
+    .c1:last-child {
+      border-bottom: none;
+    }
+  }
+
+}
+
+//订单商品部分，上面为地址部分
+.block {
+  margin-top: 20px;
+  padding: 0px 17px;
+
+  .box {
+    margin-top: 20px;
+    padding: 20px 17px;
+    background-color: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+
+    .top {
+      display: flex;
+      justify-content: flex-start;
+      font-size: 23px;
+      font-family: "SourceHanSansCN-Regular";
+      font-weight: 400;
+
+      .left {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        span{
+            display: inline-block;
+            padding-left: 10px;
+        }
+      }
+    }
+
+    .goods {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+
+      .imgContainer {
+        height: 155px;
+        width: 155px;
+        padding-top: 10px;
+        &.goodsimg{
+          height: 104px;
+          width: 104px;
+          img{
+            width: 100%;
+            height: 100%;
+          }
+        }
+
+        img {
+          width: 155px;
+          border-radius: 15px;
+        }
+      }
+
+      .rightInfo {
+        padding: 9px 18px;
+        width: 425px;
+        p {
+          font-size: 27px;
+          font-family: "SourceHanSansCN-Regular";
+          font-weight: 400;
+          color: #262626;
+        }
+
+        .kg {
+          display: block;
+          margin: 15px 0px;
+          font-size: 20px;
+          font-family: "HYQiHeiX1-DEW";
+          font-weight: normal;
+          color: #808080;
+        }
+      }
+
+      .right {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-end;
+        padding-top: 10px;
+        width: 108px;
+        padding-bottom: 17px;
+
+        .s3 {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+          overflow: hidden;
+
+          .t1 {
+            font-size: 23px;
+            font-family: "PingFangSC-Regular";
+            font-weight: 400;
+            color: #333333;
+          }
+
+          .t2 {
+            font-size: 17px;
+            color: #808080;
+            font-family: "HYQiHeiX1-DEW";
+            font-weight: normal;
+            display: block;
+          }
+        }
+
+        .s4 {
+          font-size: 27px;
+          font-family: "PingFangSC-Regular";
+          font-weight: 400;
+        }
+      }
+    }
+
+
+    .all {
+      overflow: hidden;
+      display: flex;
+      position: relative;
+      justify-content: flex-end;
+
+      right: -272px;
+      width: 400px;
+
+      .cnt {
+        font-size: 20px;
+        margin-left: 14px;
+        color: #808080;
+        line-height: 33px;
+      }
+
+      .s4 {
+        font-size: 27px;
+        font-family: "PingFangSC-Regular";
+        font-weight: 400;
+      }
+
+
+
+    }
+  }
+}
+
+//优惠券区域
+.yhq {
+  padding: 22px 0;
+  display: flex;
+  justify-content: space-between;
+  font-size: 23px;
+  font-family: SourceHanSansCN-Regular;
+  font-weight: 400;
+
+  .left {
+    display: flex;
+    justify-items: center;
+
+    .yhqImg {
+      width: 38px;
+      height: 36px;
+      margin: 7px;
+    }
+
+    span {
+      display: inline-block;
+      padding-left: 18px;
+      line-height: 52px;
+    }
+  }
+
+  .right {
+    display: flex;
+    justify-items: center;
+
+    span {
+      display: inline-block;
+      padding-left: 18px;
+      line-height: 52px;
+    }
+
+    .img1 {
+      width: 33px;
+      height: 33px;
+      margin: 9px 29px;
+    }
+
+    .img2 {
+      width: 13px;
+      height: 25px;
+      margin-top: 13px;
+    }
+  }
+
+}
+
+
+.song {
+  padding-top: 20px;
+
+  div {
+    margin: 6px 0;
+  }
+
+  .p1 {
+    font-size: 20px;
+    font-family: HYQiHeiX1-DEW;
+    font-weight: normal;
+    color: #666666;
+    display: inline-block;
+    padding-right: 10px;
+  }
+
+  .p2 {
+    font-size: 18px;
+    font-family: HYQiHeiX1-DEW;
+    font-weight: normal;
+    color: #808080;
+  }
+
+  .song_top {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .song_middle {
+    display: flex;
+    justify-content: space-between;
+    font-size: 22px;
+    font-family: HYQiHeiX1-EEW;
+    font-weight: normal;
+    color: #262626;
+  }
+
+  .song_bottom {
+    display: flex;
+    justify-content: space-between;
+    font-size: 24px;
+    font-family: HYQiHeiX1-EEW;
+    font-weight: normal;
+    color: #33080B;
+
+    .p2 {
+      font-size: 26px;
+      font-family: PingFangSC-Regular;
+      font-weight: 400;
+      color: #E1212D;
+    }
+  }
+
+  .lwf {
+    height: 38px;
+    //   padding-top: 5px;
+    display: inline-block;
+
+    img {
+      vertical-align: middle;
+    }
+  }
+}
+
+//底部功能
+.bottom_pay {
+  position: fixed;
+  bottom: 0px;
+  background-color: #fff;
+  width: 100%;
+  display: inline-flex;
+  height: 97px;
+  line-height: 97px;
+  font-size: 30px;
+
+  .sub_btn {
+    display: inline-block;
+    width: 200px;
+    background: #E1212D;
+    //    background:rgba(255,182,82,1);
+    text-align: center;
+    vertical-align: middle;
+    color: #fff;
+  }
+
+  .total_num {
+    flex: 1;
+    text-align: right;
+    margin-right: 40px;
+
+    .total_num_price {
+      font-size: 30px;
+      font-family: PingFangSC-Regular;
+      font-weight: 400;
+      color: #E1212D;
+      // color:rgba(234,171,62,1);
+    }
+
+    .count {
+      font-size: 20px;
+      font-family: PingFangSC-Regular;
+      font-weight: 400;
+      color: #808080;
+      display: inline-block;
+    }
+  }
+
+}
+
+// 订单时间
+.orderDetails {
+  margin: 15px;
+  background-color: #fff;
+  padding: 19px;
+  border-radius: 15px;
+
+  .title {
+    font-size: 23px;
+    font-family: SourceHanSansCN-Regular;
+    font-weight: 400;
+    color: #4d4d4d;
+  }
+
+  .time {
+    position: relative;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-family: HYQiHeiX1-DEW;
+    font-weight: normal;
+    color: #666666;
+
+    .time:last-child {
+      margin-left: 32px;
+    }
+  }
+}
+
+.copy {
+  position: absolute;
+  left: 641px;
+}
+
+.wl_center {
+  margin: 0 auto;
+}
+
+//底部区域
+.bottom {
+  position: fixed;
+  bottom: 0px;
+  background-color: #fff;
+  width: 100%;
+
+  ul.bottomList {
+    li {
+      float: right;
+      padding: 24px;
+      list-style: none;
+      font-size: 25px;
+      font-family: PingFangSC-Regular;
+      font-weight: 400;
+      color: #666666;
+      &.moreItem{
+        position: relative;
+        ul.morePopupList{
+
+          li{
+            color: #fff;
+            width: 165px;
+            height: 50px;
+            line-height: 50px;
+            padding: 0;
+            margin-bottom: 3px;
+          }
+        }
+      }
+    }
+    li:first-child{
+        color: #E1212D;
+    }
+
+  }
+  .morePopup{
+    // position: fixed;
+    position: absolute;
+    bottom: 95px;
+    right: 20px;
+    ul{
+      // display:block;
+      // width: 100%;
+      li{
+        display:block;
+        width: 100%;
+        background:rgba(0,0,0,0.4);
+        border-radius:5px;
+        height: 50px;
+        line-height: 50px;
+        padding: auto;
+        text-align: center;
+        font-size:25px;
+        font-family:PingFangSC-Regular;
+        font-weight:400;
+        color:rgba(255,255,255,1);
+        
+      }
+
+    }
+    .morePopup_bottom{
+      position: absolute;
+      bottom: 0;
+      right: 30px;
+      bottom: -17px;
+      border-radius: 10px;
+      .triangle_topright {
+        width: 0;
+        height: 0;
+        border-top: 20px solid rgba(0,0,0,0.4);
+        border-left: 20px solid transparent;
+        margin-bottom:0;
+        // border-radius: 5px;
+    
+    }
+    }
+  }
+}
+// 占位区域
+.blankspace{
+  height: 194px;
+  width: 100%;
+}

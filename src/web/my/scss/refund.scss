@@ -1,0 +1,213 @@
+.main {
+  overflow: hidden;
+
+  .bannerShow {
+    background-color: #E1212D;
+    height: 92px;
+    font-size: 35px;
+    font-family: "PingFangSC-Regular";
+    font-weight: 400;
+    color: #fff;
+    position: fixed;
+    z-index: 100;
+    width: 100%;
+    top: 0;
+
+    .blackup {
+      position: absolute;
+      top: 35px;
+      left: 33px;
+      z-index: 999;
+    }
+
+    .center_1 {
+      position: absolute;
+      top: 32px;
+      left: 50%;
+      transform: translate(-50%);
+      display: inline-block;
+    }
+
+    .garbage {
+      position: absolute;
+      top: 36px;
+      right: 26px;
+    }
+  }
+
+  .content {
+    margin-top: 125px;
+    padding: 0px 17px;
+
+    .box {
+      margin-top: 20px;
+      padding: 20px 17px;
+      background-color: #fff;
+      border-radius: 15px;
+      overflow: hidden;
+
+      .top {
+        display: flex;
+        justify-content: space-between;
+        font-size: 23px;
+        font-family: "SourceHanSansCN-Regular";
+        font-weight: 400;
+
+        .left {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+            span{
+            display: inline-block;
+            padding-left: 15px;    
+            }
+        }
+      }
+
+      .goods {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+
+        .imgContainer {
+          height: 155px;
+          width: 155px;
+          padding-top: 10px;
+
+          img {
+            width: 155px;
+            height: 155px;
+            border-radius: 15px;
+          }
+        }
+
+        .rightInfo {
+          padding: 9px 18px;
+          width: 370px;
+          p {
+            font-size: 27px;
+            font-family: "SourceHanSansCN-Regular";
+            font-weight: 400;
+            color: #262626;
+          }
+
+          .kg {
+            display: block;
+            margin: 15px 0px;
+            font-size: 20px;
+            font-family: "HYQiHeiX1-DEW";
+            font-weight: normal;
+            color: #808080;
+          }
+        }
+
+        .right {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          align-items: flex-end;
+          padding-top: 10px;
+          width: 108px;
+          padding-bottom: 17px;
+
+          .s3 {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            overflow: hidden;
+
+            .t1 {
+              font-size: 23px;
+              font-family: "PingFangSC-Regular";
+              font-weight: 400;
+              color: #333333;
+            }
+
+            .t2 {
+              font-size: 17px;
+              color: #808080;
+              font-family: "HYQiHeiX1-DEW";
+              font-weight: normal;
+              display: block;
+            }
+          }
+
+          .s4 {
+            font-size: 27px;
+            font-family: "PingFangSC-Regular";
+            font-weight: 400;
+          }
+        }
+      }
+
+      .bt {
+
+        //底部按钮部分
+        li {
+          float: right;
+          padding-left: 35px;
+
+          button {
+            font-size: 23px;
+            font-family: SourceHanSansCN-Regular;
+            font-weight: 400;
+            padding: 9px 0;
+            width: 140px;
+            border: 1px solid rgba(225, 33, 45, 1);
+            border-radius: 20px;
+            background-color: #fff;
+            color: #E1212D;
+            outline: none;
+          }
+        }
+      }
+
+       //   查看详情
+       .all {
+        overflow: hidden;
+        font-size: 23px;
+        font-family: HYQiHeiX1-DEW;
+        font-weight: normal;
+        .jf {
+          color: #333333;
+        }
+
+        .tk {
+          color: #808080;
+          padding-left: 10px;
+        }
+      }
+    }
+  }
+  .bottomText{
+      width: 250px;
+      margin: 0 auto;
+      text-align: center;
+      span{
+          display: block;
+          padding: 10px;
+      }
+  }
+
+  .load{
+    width: 250px;
+    height: 100px;
+    padding-top: 15px;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    color:black;
+    margin-left: -125px;
+    background-color: rgba(225,225,225, 0.5);
+    border-radius: 15px;
+    span{
+        text-align: center;
+        display: block;
+    }
+    img{
+        display: block;
+        margin: 0 auto;
+    }
+
+}
+}

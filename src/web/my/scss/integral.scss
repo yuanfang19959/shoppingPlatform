@@ -1,0 +1,221 @@
+.main {
+  background-color: #fff;
+  position: relative;
+
+  .bannerShow {
+    .blackup {
+      position: absolute;
+      top: 35px;
+      left: 33px;
+      z-index: 999;
+    }
+
+    span {
+      position: absolute;
+      top: 32px;
+      left: 50%;
+      transform: translate(-50%);
+      display: inline-block;
+      font-size: 35px;
+      font-family: "PingFangSC-Regular";
+      font-weight: 400;
+      color: #fff;
+    }
+  }
+
+  .top {
+
+    background-color: red;
+    height: 442px;
+    background: -webkit-linear-gradient(#E1212D, #E8893D);
+    /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(#E1212D, #E8893D);
+    /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(#E1212D, #E8893D);
+    /* Firefox 3.6 - 15 */
+    background: linear-gradient(#E1212D, #E8893D);
+
+    /* 标准的语法 */
+    .s1 {
+      font-size: 89px;
+      display: inline-block;
+      margin: 126px 0 10px 0;
+      color: #fff;
+      font-family: "PingFangSC-Regular";
+    }
+
+    .centerBox {
+      width: 282px;
+      margin: 0 auto;
+      text-align: center;
+
+      .gy {
+        position: relative;
+        margin-bottom: 35px;
+
+        .s2 {
+          font-size: 25px;
+          font-family: "PingFangSC-Thin";
+          font-weight: 100;
+          color: #fff;
+        }
+
+        .line1 {
+          display: inline-block;
+          height: 2px;
+          width: 44px;
+          background-color: #fff;
+          position: absolute;
+          top: 50%;
+          left: 35px;
+        }
+
+        .line {
+          display: inline-block;
+          height: 2px;
+          width: 44px;
+          background-color: #fff;
+          position: absolute;
+          top: 50%;
+          right: 35px;
+        }
+      }
+
+      .pic {
+        img {
+          padding: 2px;
+        }
+      }
+    }
+  }
+
+  .middle {
+    padding: 0 16px;
+    position: absolute;
+    top:495px;
+
+    .progress {
+
+      border-radius: 15px;
+      background-color: #FFFFFF;
+      display: flex;
+      flex-direction: column;
+      padding-bottom: 20px;
+
+      .next {
+        text-align: center;
+        display: block;
+        margin: 26px 0;
+        font-size: 20px;
+        font-family: "PingFangSC-Thin";
+        font-weight: 100;
+        color: #E1212D;
+      }
+
+      .vermiddle {
+        padding: 0px 20px;
+        display: flex;
+        justify-content: space-between;
+
+        .left {
+          display: flex;
+          flex-direction: column;
+
+          progress {
+            width: 504px;
+            height: 16px;
+            background: #EFEFF4;
+            border-radius: 15px;
+          }
+
+          progress::-webkit-progress-bar {
+            background-color: #f2f2f2;
+            border-radius: 15px;
+          }
+
+          /* 表示已完成进度背景色 */
+          progress::-webkit-progress-value {
+            background: #E1212D;
+            border-radius: 15px;
+          }
+
+          .l1 {
+            padding-top: 10px;
+            display: flex;
+            justify-content: space-between;
+
+            span {
+              display: block;
+              font-size: 30px;
+              font-family: "PingFangSC-Thin";
+              font-weight: 100;
+              color: #E1212D;
+            }
+          }
+        }
+
+        .right {
+          font-size: 30px;
+          font-family: "PingFangSC-Regular";
+          font-weight: 400;
+          color: #E1212D;
+          position: relative;
+          top: -15px;
+        }
+      }
+    }
+
+    .jf {
+      margin-top: 16px;
+      width: 666px;
+      border-radius: 15px;
+      background-color: #FFFFFF;
+      padding: 24px 24px 330px 24px;
+
+      .s3 {
+        font-size: 30px;
+        font-family: "PingFangSC-Thin";
+        font-weight: 100;
+        color: #333333;
+        display: block;
+      }
+
+      .content {
+        margin-top: 40px;
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid #D9D9D9;
+
+        .left {
+          display: flex;
+          flex-direction: column;
+          width: 593px;
+
+          p {
+            font-size: 30px;
+            font-family: "SourceHanSansCN-Regular";
+            font-weight: 400;
+            color: #262626;
+          }
+
+          .date {
+            font-size: 30px;
+            font-family: "SourceHanSansCN-Light";
+            font-weight: 300;
+            color: #808080;
+            display: block;
+            padding: 40px 0;
+          }
+        }
+
+        .multi {
+          font-size: 40px;
+          font-family: "PingFangSC-Regular";
+          font-weight: 400;
+          color: #E1212D;
+          padding-top: 37px;
+        }
+      }
+    }
+  }
+}

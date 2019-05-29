@@ -1,0 +1,124 @@
+.main {
+  position: relative;
+
+  .bannerShow {
+    background-color: #E1212D;
+    height: 92px;
+    font-size: 35px;
+    font-family: "PingFangSC-Regular";
+    font-weight: 400;
+    color: #fff;
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+    top: 0;
+
+    .blackup {
+      position: absolute;
+      top: 35px;
+      left: 33px;
+      z-index: 999;
+    }
+
+    .center_1 {
+      position: absolute;
+      top: 32px;
+      left: 50%;
+      transform: translate(-50%);
+      display: inline-block;
+    }
+
+    img {
+      position: absolute;
+      top: 42px;
+      right: 127px;
+    }
+
+    .leftS {
+      position: absolute;
+      top: 32px;
+      right: 28px;
+      font-size: 35px;
+      display: inline-block;
+    }
+  }
+
+  .clear {
+    height: 92px;
+  }
+
+  .topmain{
+      background-color: #fff;
+      margin: 17px;
+    padding: 19px;
+    border-radius: 15px;
+  .topContent {
+    display: flex;
+    justify-content: flex-start;
+    padding-bottom: 25px;
+    color: #333333;
+    background-color: #fff;
+    border-bottom: 1px solid #E6E6E6;
+    img {
+      width: 75px;
+      height: 75px;
+    }
+
+    .topLeft {
+      padding-left: 10px;
+
+      p {
+        font-size: 25px;
+        font-family: SourceHanSansCN-Light;
+        font-weight: 300;
+        color: #262626;
+      }
+
+      span {
+        padding-top: 15px;
+        font-size: 20px;
+        font-family: HYQiHeiX1-DEW;
+        font-weight: normal;
+        color: #808080;
+      }
+    }
+  }
+}
+}
+
+.write {
+//   margin: 17px;
+//   padding: 19px;
+//   background-color: #fff;
+//   border-radius: 15px;
+
+  textarea {
+    outline: none;
+    border: none;
+    font-size: 30px;
+    font-family: SourceHanSansCN-Light;
+    font-weight: 300;
+    color: #808080;
+    padding-left: 10px;
+    padding-top: 10px;
+    background-color: #F7F7F7;
+    height: 310px;
+    width: 669px;
+    border-radius: 15px;
+  }
+}
+
+// 匿名按钮
+.write_bottom{
+    display: flex;
+    justify-content: flex-end;
+    span{
+        vertical-align: center;
+        line-height: 41px;
+    }
+    img{
+        padding-left: 15px;
+        width: 41px;
+        height: 41px;
+    }
+}

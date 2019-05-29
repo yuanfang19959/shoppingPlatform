@@ -1,0 +1,103 @@
+.main {
+  .bannerShow {
+    background-color: #E1212D;
+    font-size: 35px;
+    font-family: "PingFangSC-Regular";
+    font-weight: 400;
+    color: #fff;
+    position: fixed;
+    z-index: 100;
+    width: 100%;
+    top: 0;
+
+    .blackup {
+      position: absolute;
+      top: 35px;
+      left: 33px;
+      z-index: 999;
+    }
+
+    .center_1 {
+      position: absolute;
+      top: 32px;
+      left: 50%;
+      transform: translate(-50%);
+      display: inline-block;
+    }
+
+    .right_text {
+      position: absolute;
+      top: 39px;
+      right: 19px;
+      font-size: 25px;
+      font-family: SourceHanSansCN-Normal;
+      font-weight: 400;
+      color: #FFFFFF;
+    }
+
+    .garbage {
+      position: absolute;
+      top: 36px;
+      right: 26px;
+    }
+  }
+
+  //   message
+  .over {
+    padding: 0 15px;
+
+    .content {
+      background-color: #fff;
+      border-radius: 15px;
+      margin: 0 auto;
+      overflow: hidden;
+
+      .top input {
+        background-color: #fafafa;
+        font-size: 30px;
+        font-family: SourceHanSansCN-Regular;
+        font-weight: 400;
+        padding: 26px 28px;
+        outline: none;
+        border: none;
+        width: 100%;
+      }
+
+      .middle textarea {
+        width: 668px;
+        font-size: 30px;
+        font-family: SourceHanSansCN-Light;
+        font-weight: 300;
+        outline: none;
+        border: none;
+        height: 666px;
+        padding: 26px;
+      }
+
+      .bottom,
+      .bottom_2 {
+        display: flex;
+        justify-content: flex-end;
+        padding-right: 26px;
+        padding-bottom: 26px;
+        font-size: 30px;
+        font-family: SourceHanSansCN-Regular;
+        font-weight: 400;
+      }
+
+    }
+
+    .btn {
+      margin-top: 49px;
+      display: block;
+      font-size: 30px;
+      font-family: SourceHanSansCN-Regular;
+      font-weight: 400;
+      padding: 26px 0;
+      background-color: #FFFFFF;
+      border-radius: 15px;
+      text-align: center;
+
+    }
+  }
+}

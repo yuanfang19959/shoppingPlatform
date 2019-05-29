@@ -1,0 +1,292 @@
+@import '@/assets/scss/commin.scss';
+.invoice_page{
+  .context{
+    .context_top{
+      background: #fff;
+      border-radius:20px;
+      display: flex;
+      padding: 17px 16px;
+      margin: 17px 16px;
+      .topimgLayer{
+        width: 75px;
+        height: 75px;
+        // margin: 17px 16px;
+        vertical-align: middle;
+        img{
+          width: 100%;
+          height: 100%;
+          vertical-align: middle;
+        }
+      }
+      .topText{
+        margin-left: 17px;
+        vertical-align: middle;
+        flex:1;
+        .topText_first{
+          font-size: 25px;
+          font-family:SourceHanSansCN-Light;
+          font-weight:300;
+          color:rgba(38,38,38,1);
+          
+        }
+        .topText_second{
+          font-size: 20px;
+          // margin-top: 26px;
+          margin-top: 15px;
+          font-size:20px;
+          font-family:SourceHanSansCN-Light;
+          font-weight:300;
+          color:rgba(38,38,38,1);
+            .moneyNum{
+              font-size:30px;
+              font-weight:400;
+              color:rgba(225,33,45,1);
+            }
+        }
+      }
+    }
+    // 发票主体数据
+    .invoice_info{
+      background: #fff;
+      border-radius:20px;
+      margin: 17px 16px;
+      .invoice_infoList{
+        padding: 30px 17px;
+        li{
+          display: flex;
+          margin-bottom: 41px;
+          padding: 0 37px;
+            .name{
+              flex: 1;
+              display: inline-block;
+            }
+          i{
+             margin-left: 22px;
+            font-style: normal;
+          }
+          .radioList{
+            vertical-align: middle;
+            img{
+              vertical-align: middle;
+              width: 35px;
+              height: 35px;
+              padding-left:1px; 
+            }
+            .radioSecond{
+              margin-left: 27px;
+            }
+          }
+          &:last-child{
+            margin-bottom: auto;
+          }
+        }
+      }
+    }
+    .invoice_detail{
+        background: #fff;
+        border-radius:20px;
+        height: 83px;
+        line-height: 83px;
+        margin: 16px 17px;
+        padding: 0 37px;
+        font-size:25px;
+        font-family:SourceHanSansCN-Light;
+        font-weight:300;
+        color:rgba(51,51,51,1);
+        .flexbox{
+          width: 100%;
+          img{
+            // padding: 0 1px;
+            padding-left: 1px;
+          }
+          .inputmail{
+            border: 0px;
+            height: 80px;
+            line-height: 80px;
+            margin: auto;
+            width: 75%;
+            // text-align: right;
+            font-size: 28px;
+            // text-indent: 5px;
+            &:outline {
+              border:0px;
+            }
+            &:focus{
+              border: 0px;
+              outline:0px;
+            }
+          }
+        }
+
+    }
+    .invoice_area{
+       background: #fff;
+        border-radius:20px;
+        
+        // height: 83px;
+        // line-height: 83px;
+        margin: 16px 17px;
+        padding: 30px 37px;
+        vertical-align: middle;
+        .navimg_layer{
+          vertical-align: middle;
+          margin: auto;
+          height: 48px;
+          img{
+            // vertical-align: middle;
+          }
+        }
+        .flex1{
+          margin-left: 33px;
+          .addrName{
+            margin-bottom: 22px;
+            .phoneName{
+            // margin-bottom: 22px;
+              font-size:32px;
+              font-family:SourceHanSansCN-Medium;
+              font-weight:500;
+              color:rgba(38,38,38,1); 
+            }
+          }
+          .addrInfo{
+            font-size:25px;
+            font-family:SourceHanSansCN-Normal;
+            font-weight:400;
+            color:rgba(38,38,38,1);
+          }
+          
+        }
+        .rigthItem{
+          height: 25px;
+          margin: auto;
+        }
+    }
+  }
+  .popupShow{
+    .popup_text{
+        .popup_text_top{
+          height: 70px;
+          line-height: 70px;
+          padding: 0 31px;
+          .flex2{
+            text-align: center;
+          }
+          .popup_text_topR{
+            text-align: right;
+            vertical-align: middle;
+            height: 41px;
+            margin: auto;
+            img{
+              // height: 
+            }
+          }
+        }
+        .popupData{
+          ul.popupDataList{
+              li{
+                  background: #fff;
+                  margin: 0 15px;
+                  border-radius:20px;
+                  padding: 26px 29px;
+                  margin-bottom: 17px;
+                  .popupDataListL{
+                      font-family:SourceHanSansCN-Light;
+                      border-right: 1px solid #CCCCCC;
+                       vertical-align: middle;
+                    .name {
+                          font-size:32px;
+                          font-family:SourceHanSansCN-Medium;
+                          font-weight:500;
+                          color:rgba(38,38,38,1);
+                      }
+                      .isDefault{
+                          font-size:20px;
+                          font-weight:300;
+                          color:rgba(225,33,45,1);
+                          margin-left: 17px;
+                      }
+                      .type{
+                          font-size:25px;
+                          font-weight:300;
+                          color:rgba(128,128,128,1);
+                          margin-top: 18px;
+                      }
+                  }
+                  .popupDataListR{
+                      width: 130px;
+                      text-align: center;
+                      vertical-align: middle;
+                      font-size:25px;
+                      font-family:SourceHanSansCN-Light;
+                      font-weight:300;
+                      color:rgba(128,128,128,1);
+                      line-height: 91px;
+                      height: 91px;
+                      // margin: auto;
+                
+
+                  }
+                  
+              }
+          }
+         .bottom_btn {
+            margin: 60px 15px 45px;
+            background:rgba(225,96,33,1);
+            border-radius:20px;
+            font-size:32px;
+            font-family:SourceHanSansCN-Normal;
+            font-weight:400;
+            color:rgba(255,255,255,1);
+            text-align: center;
+            height: 72px;
+            line-height: 72px;
+         }
+         .notData{
+           text-align: center;
+           margin: 200px auto;
+         }
+      }
+    }
+  }
+}
+.invoiceAdd_page{
+  .context{
+    .invoice_infoList{
+      li{
+        .name{
+          font-size:25px;
+          font-family:SourceHanSansCN-Light;
+          font-weight:300;
+          color:rgba(51,51,51,1);
+        }
+        input{
+              border:0px;
+              width: 300px;
+              text-align: right;
+              font-size:20px;
+              font-family:SourceHanSansCN-Light;
+              font-weight:300;
+              color:rgba(128,128,128,1);
+              &:focus{
+                outline: 0px;
+              }
+            }
+      }
+    }
+
+  }
+  .delBtn{
+    // height:30px;
+    font-size:32px;
+    font-family:SourceHanSansCN-Normal;
+    font-weight:400;
+    background:rgba(225,96,33,1);
+    border-radius:36px;
+    margin: 0 15px;
+    text-align: center;
+    height: 72px;
+    line-height: 72px;
+    margin-top: 200px;
+    color:rgba(255,255,255,1);
+  }
+}

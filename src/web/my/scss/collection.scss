@@ -1,0 +1,189 @@
+.main {
+  position: relative;
+
+  .bannerShow {
+    background-color: #E1212D;
+    height: 92px;
+    font-size: 35px;
+    font-family: "PingFangSC-Regular";
+    font-weight: 400;
+    color: #fff;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    .blackup {
+      position: absolute;
+      top: 23px;
+      left: 33px;
+      z-index: 999;
+    }
+
+    .center_1 {
+      position: absolute;
+      top: 23px;
+      left: 50%;
+      transform: translate(-50%);
+      display: inline-block;
+    }
+
+    img {
+      position: absolute;
+      top: 29px;
+      right: 127px;
+    }
+
+    .leftS {
+      position: absolute;
+      top: 27px;
+      right: 28px;
+      font-size: 27px;
+      display: inline-block;
+    }
+  }
+
+  .content {
+    padding: 0px 17px;
+
+    .goods {
+      .yc {
+        padding: 81px 20px 50px 20px;
+
+        img {
+          max-width: 35px;
+        }
+      }
+
+      display: flex;
+      justify-content: flex-start;
+      margin:17px 0 10px 0;
+
+      .imgContainer {
+        height: 214px;
+        width: 214px;
+        vertical-align: middle;
+        background-color: #fff;
+
+        img {
+          height: 214px;
+          width: 214px;
+        }
+      }
+
+      .rightInfo {
+        padding: 9px 18px;
+
+        p {
+          font-size: 30px;
+          font-family: "SourceHanSansCN-Regular";
+          font-weight: 400;
+          color: #262626;
+        }
+
+        .kg {
+          display: block;
+          margin: 5px 0px;
+          font-size: 20px;
+          font-family: "HYQiHeiX1-DEW";
+          font-weight: normal;
+          color: #808080;
+        }
+
+        .tips {
+          margin-bottom: 10px;
+
+          span {
+            height: 24px;
+            border: 1px solid #E1212D;
+            font-size: 17px;
+            color: #E1212D;
+            padding: 0px 12px;
+            border-radius: 15px;
+          }
+
+          :last-child {
+            margin-left: 14px;
+          }
+        }
+
+        .bottom {
+
+          .s1 {
+            font-size: 30px;
+            font-family: "PingFangSC-Regular";
+            font-weight: 400;
+            color: #E1212D;
+
+            .s2 {
+              display: inline-block;
+              color: #B3B3B3;
+              font-size: 20px;
+              font-family: "PingFangSC-Regular";
+              font-weight: 400;
+              padding-left: 40px;
+            }
+          }
+
+          display: flex;
+          justify-content: space-between;
+        }
+      }
+    }
+  }
+
+  .blackspace {
+    height: 120px;
+
+  }
+}
+
+//底部功能
+.bottom_pay {
+  position: fixed;
+  bottom: 0px;
+  background-color: #fff;
+  width: 100%;
+  display: inline-flex;
+  height: 97px;
+  line-height: 97px;
+  font-size: 30px;
+
+  .sub_btn {
+    display: inline-block;
+    width: 200px;
+    background: #E1212D;
+    //    background:rgba(255,182,82,1);
+    text-align: center;
+    vertical-align: middle;
+    color: #fff;
+    position: absolute;
+    right: 0;
+  }
+
+  .checked_btn {
+    margin-left: 32px;
+    margin-right: 17px;
+
+    .checked_btn_text {
+      display: inline-block;
+      line-height: 93px;
+    }
+
+    .img_layer {
+      display: inline-block;
+      // padding: 2px;
+      height: 92px;
+      line-height: 97px;
+      vertical-align: middle;
+
+      img {
+        max-width: 35px;
+      }
+
+    }
+  }
+}
+//占位
+.clear{
+    height: 92px;
+    width: 100%;
+}

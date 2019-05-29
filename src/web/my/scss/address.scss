@@ -1,0 +1,156 @@
+.main {
+  position: relative;
+
+  .bannerShow {
+    background-color: #E1212D;
+    font-size: 35px;
+    font-family: "PingFangSC-Regular";
+    font-weight: 400;
+    color: #fff;
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+   top: 0;
+
+    .blackup {
+      position: absolute;
+      top: 35px;
+      left: 33px;
+      z-index: 999;
+    }
+
+    .center_1 {
+      position: absolute;
+      top: 32px;
+      left: 50%;
+      transform: translate(-50%);
+      display: inline-block;
+    }
+
+    img {
+      position: absolute;
+      top: 42px;
+      right: 127px;
+    }
+
+    .leftS {
+      position: absolute;
+      top: 38px;
+      right: 28px;
+      font-size: 27px;
+      display: inline-block;
+    }
+  }
+
+ .clear{
+     height: 92px;
+ }
+  .activeContent2 {
+    padding: 5px 22px 0;
+    border: 1px solid #E1212D;
+  }
+
+  // #content2{
+  //     padding: 5px  22px 0;
+  //     border: 1px solid #E1212D;
+  // }
+  .content {
+    margin: 16px;
+    background: #fff;
+    border-radius: 15px;
+    padding: 22px;
+
+    &.notactiveContent2 {
+      margin: 0 16px;
+      border-radius: 0px;
+      border-bottom: 1px solid #D9D9D9;
+    }
+
+    &:nth-child(3) {
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+      // background: red;
+    }
+
+    &:last-child {
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px;
+    }
+
+    .defaultAddress {
+      font-size: 20px;
+      font-family: "PingFangSC-Thin";
+      font-weight: 100;
+      color: #E1212D;
+    }
+
+    .c1 {
+      margin-top: 20px;
+      position: relative;
+      padding-bottom: 22px;
+      display: flex;
+      justify-content: space-between;
+      // border-bottom: 1px solid #D9D9D9;
+
+      .left {
+        display: flex;
+        flex-direction: column;
+        width: 504px;
+
+        .top {
+          margin-bottom: 20px;
+        }
+
+        .s1 {
+          font-size: 32px;
+          font-family: "SourceHanSansCN-Medium";
+          font-weight: 500;
+          color: #262626;
+        }
+
+        .phone {
+          font-size: 30px;
+          font-family: "SourceHanSansCN-Normal";
+          font-weight: 400;
+          color: #808080;
+        }
+
+        .addressTest {
+          font-size: 30px;
+          font-family: "SourceHanSansCN-Normal";
+          font-weight: 400;
+          color: #262626;
+        }
+      }
+
+      .line {
+        width: 1px;
+        height: 69px;
+        background-color: #999999;
+        position: absolute;
+        top: 10%;
+        right: 115px;
+      }
+
+      .edit {
+        font-size: 30px;
+        font-family: "PingFangSC-Regular";
+        font-weight: 400;
+        color: #999999;
+        position: absolute;
+        top: 22%;
+        right: 0;
+      }
+    }
+
+    .c1:last-child {
+      border-bottom: none;
+    }
+  }
+
+  .bottomBlank {
+    height: 30px;
+    // width: 
+  }
+
+}

@@ -1,0 +1,263 @@
+.main {
+  position: relative;
+
+  .clear {
+    height: 108px;
+  }
+
+  .bannerShow {
+    overflow: hidden;
+    background-color: #E1212D;
+    height: 108px;
+    font-size: 35px;
+    font-family: "PingFangSC-Regular";
+    font-weight: 400;
+    color: #fff;
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+    top: 0;
+
+    .blackup {
+      position: absolute;
+      top: 35px;
+      left: 33px;
+      z-index: 999;
+    }
+
+    .center_1 {
+      position: absolute;
+      top: 32px;
+      left: 50%;
+      transform: translate(-50%);
+      display: inline-block;
+    }
+  }
+
+  .content {
+    margin: 17px;
+    background-color: #fff;
+    border-radius: 15px;
+    text-align: center;
+
+    img {
+      margin: 35px 0 40px 0;
+      width: 110px;
+      height: 110px;
+    }
+
+    p {
+      margin-bottom: 35px;
+    }
+
+    .contbottom {
+      padding: 44px 53px;
+      border-radius: 0 0 15px 15px;
+      background: linear-gradient(87deg, #FF8F52 0%, #E1212D 100%);
+      color: #fff;
+
+      .s1 {
+        font-size: 35px;
+        font-family: PingFangSC-Regular;
+        font-weight: 400;
+      }
+
+      .s2 {
+        font-size: 25px;
+        font-family: SourceHanSansCN-Light;
+        font-weight: 300;
+
+      }
+    }
+  }
+
+  .content2 {
+    margin: 17px;
+    background-color: #fff;
+    border-radius: 15px;
+
+    .cont {
+      display: flex;
+      justify-content: flex-start;
+      padding: 25px;
+
+      .contLeft {
+        padding-left: 15px;
+
+        img {
+          margin-left: 20px;
+          width: 7px;
+          height: 14px;
+        }
+
+        .s1 {
+          font-size: 25px;
+          font-family: SourceHanSansCN-Regular;
+          font-weight: 400;
+          color: #262626;
+        }
+
+        .s2 {
+          display: block;
+          font-size: 20px;
+          font-family: SourceHanSansCN-Light;
+          font-weight: 300;
+          color: #666666;
+          padding: 15px 0;
+
+          a {
+            color: #666666;
+          }
+        }
+
+      }
+
+      img {
+        width: 78px;
+        height: 78px;
+        border-radius: 50%;
+      }
+    }
+
+
+
+    .contbt {
+      padding: 25px 19px;
+      font-size: 20px;
+      font-family: SourceHanSansCN-Light;
+      font-weight: 300;
+      background-color: #F7F9FC;
+      border-radius: 0 0 15px 15px;
+
+      img {
+        vertical-align: middle;
+      }
+
+      .s3 {
+        color: #262626;
+        margin-right: 74px;
+        display: inline-block;
+      }
+
+      .s4 {
+        color: #808080;
+      }
+    }
+  }
+
+  .wl {
+    margin: 17px;
+    padding: 34px 34px 34px 20px;
+    background-color: #fff;
+    border-radius: 15px;
+    position: relative;
+
+    .address {
+      display: flex;
+      justify-content: flex-start;
+      font-size: 25px;
+      font-family: SourceHanSansCN-Light;
+      font-weight: 300;
+      color: #808080;
+
+      img {
+        position: absolute;
+        left: 100px;
+      }
+
+      .addressleft {
+        margin-left: 106px;
+        padding-left: 46px;
+        padding-bottom: 50px;
+        border-left: 1px dotted #b3b3b3;
+      }
+    }
+
+    .cell {
+      display: flex;
+      justify-content: flex-start;
+      position: relative;
+
+      .cleft {
+        width: 106px;
+      
+
+        .bg {
+          position: absolute;
+          top: 0;
+          left: 81px;
+          background-color: #fff;
+          height: 50px;
+        }
+
+        // img {
+        //   position: absolute;
+        //   top: 0;
+        //   left: 81px;
+        // }
+
+        .s1 {
+          font-size: 30px;
+          font-family: SourceHanSansCN-Normal;
+          font-weight: 400;
+          color: #808080;
+        }
+
+        .s2 {
+          display: block;
+          padding-left: 10px;
+          font-size: 18px;
+          font-family: SourceHanSansCN-Light;
+          font-weight: 300;
+          color: rgba(51, 51, 51, 1);
+          color: #333333;
+        }
+      }
+
+      .cright {
+        padding-left: 52px;
+        color: #333333;
+        padding-bottom: 50px;
+        border-left: 1px solid #b3b3b3;
+        width: 510px;
+        span {
+          font-size: 30px;
+          font-family: SourceHanSansCN-Normal;
+          font-weight: 400;
+        }
+
+        p {
+          padding: 11px 0;
+          font-size: 22px;
+          font-family: SourceHanSansCN-Light;
+          font-weight: 300;
+        }
+      }
+    }
+
+
+    .cell:last-child {
+      .cright {
+        border: none;
+      }
+    }
+
+    // 底部展开更多
+    .bts {
+      display: block;
+      width: 300px;
+      font-size: 22px;
+      font-family: SourceHanSansCN-Light;
+      font-weight: 300;
+      color: #808080;
+      margin: 0 auto;
+      text-align: center;
+      margin-top: 30px;
+
+      img {
+        margin-left: 14px;
+        vertical-align: middle;
+      }
+    }
+  }
+}

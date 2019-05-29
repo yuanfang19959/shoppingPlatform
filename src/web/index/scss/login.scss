@@ -1,0 +1,122 @@
+.mainCon {
+  text-align: center;
+  font-family: HYQiHeiX1-FEW;
+  font-weight: normal;
+  color: #333333;
+  background-color: #fff;
+
+  .logo_img {
+    width: 333px;
+    height: 278px;
+    margin: 10% 0 40px 0;
+  }
+
+  .p1 {
+    font-size: 40px;
+  }
+
+  .p2 {
+    font-size: 32px;
+    padding: 98px 0 136px 0;
+  }
+
+  .btn button {
+    height: 88px;
+    width: 656px;
+    background-color: #E1212D;
+    outline: none;
+    border-radius: 15px;
+    font-size: 40px;
+    font-family: HYQiHeiX1-FEW;
+    font-weight: normal;
+    color: #fff;
+  }
+
+  .page_top {
+    text-align: left;
+    margin-left: 46px;
+    margin-top: 100px;
+    margin-bottom: 25px;
+    font-size: 40px;
+    font-family: HYQiHeiX1-EEW;
+    font-weight: normal;
+    color: rgba(51, 51, 51, 1);
+  }
+
+  .btn button:last-child {
+    margin-top: 26px;
+    background-color: #fff;
+    border: 1px solid #E1212D;
+    font-size: 35px;
+    font-family: HYQiHeiX1-DEW;
+    font-weight: normal;
+    color: #E1212D;
+  }
+
+  .bindPhone {
+    position: relative;
+
+    button {
+      height: 88px;
+      width: 656px;
+      background-color: #E1212D;
+      outline: none;
+      border-radius: 15px;
+      font-size: 40px;
+      font-family: HYQiHeiX1-FEW;
+      font-weight: normal;
+      color: #fff;
+    }
+
+    .s1 {
+      display: block;
+      font-size: 40px;
+      font-family: HYQiHeiX1-EEW;
+      font-weight: normal;
+      color: #333333;
+    }
+
+    input {
+      background-color: #F2F2F2;
+      height: 88px;
+      width: 656px;
+      margin-bottom: 25px;
+      border-radius: 15px;
+      outline: none;
+      font-size: 35px;
+      padding-left: 15px;
+      outline: medium;
+      border: none;
+    }
+
+    .imgCode_box {
+        position: relative;
+      img {
+        position: absolute;
+        right: 58px;
+        width: 222px;
+        height: 65px;
+
+        &.imgCode {
+        top:10px;
+        }
+      }
+    }
+
+
+    .s2 {
+      position: absolute;
+      top: 300px;
+      right: 58px;
+      font-size: 35px;
+      font-family: HYQiHeiX1-EEW;
+      font-weight: normal;
+      color: #E1212D;
+
+      &.msgBtn {
+        top: 320px;
+      }
+    }
+
+  }
+}
