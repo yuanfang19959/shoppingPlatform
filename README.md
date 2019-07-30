@@ -19,12 +19,12 @@ H5+Vue 移动端电商项目，前后端分离。用了一点es6，出来实习�
 4. 业务上有分页的需求，于是使用原生js写了一个加载。写的时候遇到了点问题，在chrome下可以正常运行。到了safari确失效了。由于没有苹果电脑，只能在手机上滑动的时候弹出alert显示scrollTop的高度；
 问题就出在scrollTop上，safari只支持window.pageYOffset,于是对代码做了改进；
 
-`javascript 
+` 
  let innerHeight = document.querySelector(".content").clientHeight; //屏幕尺寸高度
  let outerHeight = document.documentElement.clientHeight; //可滚动容器超出当前窗口显示范围的高度 
 `
 //scrollTop在页面为滚动时为0，开始滚动后，慢慢增加，滚动到页面底部时，出现innerHeight < (outerHeight + scrollTop)的情况，严格来讲，是接近底部。
-`javascript
+`
  let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0 //解决不同浏览器的兼容性
 `
 5. 首页轮播图使用了swiper.js动态加载后端传来的数据时，会造成无法滑动的问题。这个时候要用定时器，进行延时加载；才能正常滑动；
